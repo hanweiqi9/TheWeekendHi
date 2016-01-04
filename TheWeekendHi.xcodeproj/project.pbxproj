@@ -46,7 +46,7 @@
 		1BA1708193465F7593E9096E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9D91451C3A1C3900B72CF9 /* TheWeekendHi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheWeekendHi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9D91491C3A1C3900B72CF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7A9D914B1C3A1C3900B72CF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7A9D914B1C3A1C3900B72CF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
 		7A9D914E1C3A1C3900B72CF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A9D91511C3A1C3900B72CF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A9D91531C3A1C3900B72CF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		7A9D91821C3A2CE000B72CF9 /* find.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = find.png; path = ../find.png; sourceTree = "<group>"; };
 		7A9D91841C3A365900B72CF9 /* 53-house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "53-house.png"; path = "../53-house.png"; sourceTree = "<group>"; };
 		7A9D918C1C3A394500B72CF9 /* 76-baby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "76-baby.png"; path = "../76-baby.png"; sourceTree = "<group>"; };
-		7A9D919A1C3A4D2000B72CF9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7A9D919A1C3A4D2000B72CF9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
 		7A9D91A91C3A4F4100B72CF9 /* FineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FineViewController.h; sourceTree = "<group>"; };
 		7A9D91AA1C3A4F4100B72CF9 /* FineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FineViewController.m; sourceTree = "<group>"; };
 		7A9D91AF1C3A4F4100B72CF9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -127,8 +127,6 @@
 				7A9D91BC1C3A4FC100B72CF9 /* Library */,
 				7A9D91BD1C3A4FC100B72CF9 /* Resource */,
 				7A9D91A61C3A4F4100B72CF9 /* Classes */,
-				7A9D919A1C3A4D2000B72CF9 /* AppDelegate.m */,
-				7A9D914B1C3A1C3900B72CF9 /* AppDelegate.h */,
 				7A9D914E1C3A1C3900B72CF9 /* Assets.xcassets */,
 				7A9D91501C3A1C3900B72CF9 /* LaunchScreen.storyboard */,
 				7A9D91531C3A1C3900B72CF9 /* Info.plist */,
@@ -285,6 +283,8 @@
 		7A9D91BD1C3A4FC100B72CF9 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7A9D919A1C3A4D2000B72CF9 /* AppDelegate.m */,
+				7A9D914B1C3A1C3900B72CF9 /* AppDelegate.h */,
 				7A9D91841C3A365900B72CF9 /* 53-house.png */,
 				7A9D918C1C3A394500B72CF9 /* 76-baby.png */,
 				7A9D91821C3A2CE000B72CF9 /* find.png */,
@@ -632,6 +632,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TheWeekendHi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MangoInc.TheWeekendHi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -644,6 +645,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TheWeekendHi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MangoInc.TheWeekendHi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
