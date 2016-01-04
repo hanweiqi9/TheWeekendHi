@@ -7,8 +7,10 @@
 //
 
 #import "MainViewController.h"
+#import "MainTableViewCell.h"
 
-@interface MainViewController ()
+@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -17,7 +19,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    //注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
 }
+
+#pragma mark-------------UITableViewDataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    MainTableViewCell *mainCell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    return mainCell;
+    
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 203;
+}
+
+
+#pragma mark-------------UITableViewDelegate
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
