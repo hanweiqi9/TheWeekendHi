@@ -7,6 +7,7 @@
 //
 
 #import "MainTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MainTableViewCell ()
 
@@ -28,6 +29,16 @@
     // Initialization code
 }
 
+//在model的set方法中赋值
+- (void)setMainModel:(MainModel *)mainModel{
+    [self.activityImageView sd_setImageWithURL:[NSURL URLWithString:mainModel.image_big] placeholderImage:nil];
+    
+    self.activityNameLabel.text = mainModel.title;
+    self.activityNameLabel.textColor = [UIColor whiteColor];
+    self.activityNameLabel.backgroundColor = [UIColor lightGrayColor];
+    self.activityPriceLabel.text = mainModel.price;
+    self.activityPriceLabel.textColor = [UIColor orangeColor];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
