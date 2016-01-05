@@ -23,14 +23,15 @@
             self.counts = dict[@"counts"];
             self.startTime = dict[@"startTime"];
             self.endTime = dict[@"endTime"];
+            self.title = dict[@"title"];
+            self.activityId = dict[@"id"];
 
         }else{
             //推荐专题
             self.activityDescription = dict[@"description"];
         }
         self.image_big = dict[@"image_big"];
-        self.title = dict[@"title"];
-        self.activityId = dict[@"id"];
+        
     }
     return  self;
 }
