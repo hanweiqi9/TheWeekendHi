@@ -19,7 +19,7 @@
 #import "GoodViewController.h"
 #import "HotViewController.h"
 
-@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 //全部列表数据
 @property(nonatomic,strong) NSMutableArray *listArray;
@@ -28,7 +28,8 @@
 //推荐专题数据
 @property(nonatomic,strong) NSMutableArray *themeArray;
 @property(nonatomic,strong) NSMutableArray *adArray;
-
+@property(nonatomic,strong) UIScrollView * scrollView;
+@property(nonatomic, strong) UIPageControl *pageControl;
 @end
 
 @implementation MainViewController
@@ -111,7 +112,7 @@
 //自定义分区区头
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] init];
-    UIImageView *sectionView = [[UIImageView alloc] initWithFrame:CGRectMake([kScreenWidth/2 - 160, 5, 320, 16)];
+    UIImageView *sectionView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth/2 - 160, 5, 320, 16)];
        if (section == 0) {
            sectionView.image = [UIImage imageNamed:@"home_recommed_ac"];
     }else{
@@ -129,35 +130,47 @@
  //选择城市
 -(void)selectCityAction:(UIBarButtonItem *)btn{
     SelectCityViewController *selectCity = [[SelectCityViewController alloc] init];
-    [self.navigationController presentViewController:selectCity animated:YES completion:nil];
+    [self presentViewController:selectCity animated:YES completion:nil];
     
 }
 //搜索页面
 - (void)searchActivityAction:(UIButton *)btn{
     SearchViewController *searchVC = [[SearchViewController alloc] init];
-    [self.navigationController presentViewController:searchVC animated:YES completion:nil];
+    [self presentViewController:searchVC animated:YES completion:nil];
     
     
 }
 //自定义tableView头部
 - (void)configTableViewHeaderView{
-    UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [kScreenWidth, 343)];
+    UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 343)];
         self.tableView.tableHeaderView = tableViewHeaderView;
     
     //添加轮播图
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [kScreenWidth, 186)];
-    scrollView.contentSize = CGSizeMake(self.adArray.count *[kScreenWidth, 186);
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 186)];
+    //整屏滑动
+    self.scrollView.pagingEnabled = YES;
+    //不显示水平方向滚动
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+                                                                     
+     //创建小圆点
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 156, kScreenWidth, 30)];
+     //小圆点个数和颜色
+    self.pageControl.numberOfPages = self.adArray.count;
+    self.pageControl.currentPageIndicatorTintColor = [UIColor cyanColor];
+    
+   [self.pageControl addTarget:self action:@selector(pageSelectAction:) forControlEvents:UIControlEventEditingChanged];
+    self.scrollView.contentSize = CGSizeMake(self.adArray.count *kScreenWidth, 186);
     for (int i = 0;i < self.adArray.count ; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([kScreenWidth * i, 0, [kScreenWidth, 186)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * i, 0, kScreenWidth, 186)];
         [imageView sd_setImageWithURL:[NSURL URLWithString:self.adArray[i]] placeholderImage:nil];
-        [scrollView addSubview:imageView];
+        [self.scrollView addSubview:imageView];
     }
-    [tableViewHeaderView addSubview:scrollView];
+    [tableViewHeaderView addSubview:self.scrollView];
 
     //添加按钮
     for (int i = 0; i < 4; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(i * [kScreenWidth / 4, 186, [kScreenWidth / 4, [kScreenWidth / 4);
+        btn.frame = CGRectMake(i * kScreenWidth / 4, 186, kScreenWidth / 4, kScreenWidth / 4);
         NSString *imageStr = [NSString stringWithFormat:@"home_icon_%02d",i+1];
         [btn setImage:[UIImage imageNamed:imageStr] forState:UIControlStateNormal];
         btn.tag = 100 + i;
@@ -167,22 +180,43 @@
     
     //精选活动/热门专题
     UIButton *activityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    activityBtn.frame = CGRectMake(0, 186 +[kScreenWidth / 4, [kScreenWidth/2,343-186- [kScreenWidth / 4);
+    activityBtn.frame = CGRectMake(0, 186 +kScreenWidth / 4, kScreenWidth/2,343-186- kScreenWidth / 4);
     [activityBtn setImage:[UIImage imageNamed:@"home_huodong"] forState:UIControlStateNormal];
     [activityBtn addTarget:self action:@selector(goodActivityButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [tableViewHeaderView addSubview:activityBtn];
     
     UIButton *themeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    themeBtn.frame = CGRectMake([kScreenWidth/2, 186+[kScreenWidth / 4, [kScreenWidth/2,343-186- [kScreenWidth / 4);
+    themeBtn.frame = CGRectMake(kScreenWidth/2, 186+kScreenWidth / 4, kScreenWidth/2,343-186- kScreenWidth / 4);
     [themeBtn setImage:[UIImage imageNamed:@"home_zhuanti"] forState:UIControlStateNormal];
     [themeBtn addTarget:self action:@selector(hotActivityButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [tableViewHeaderView addSubview:themeBtn];
+    [tableViewHeaderView addSubview:self.pageControl];
 
     
    
     
 }
+                                                                                                  
+#pragma mark-------------首页轮播图
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+ //第一步：获取scrollView页面的宽度
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+  //第二步：获取偏移量
+    CGPoint offset = self.scrollView.contentOffset;
+  //第三步：通过偏移量和页面宽度计算出当前页面
+    NSInteger pageNumber = offset.x/pageWidth;
+    self.pageControl.currentPage = pageNumber;
+}
 
+                                                                                                  
+- (void)pageSelectAction:(UIPageControl *)pageControl{
+    //第一步：获取pageControl点击的页面在第几页
+    NSInteger pageNumber = pageControl.currentPage;
+    //第二步：获取页面宽度
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    //让scrollView滚动到第几页
+    self.scrollView.contentOffset = CGPointMake(pageNumber *pageWidth, 0);
+}
 - (void)requestModel{
     
     AFHTTPSessionManager *sessionManage = [AFHTTPSessionManager manager];
