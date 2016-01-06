@@ -29,6 +29,7 @@
         }else{
             //推荐专题
             self.activityDescription = dict[@"description"];
+            
         }
         self.image_big = dict[@"image_big"];
         

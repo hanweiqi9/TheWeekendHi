@@ -31,13 +31,21 @@
 
 //在model的set方法中赋值
 - (void)setMainModel:(MainModel *)mainModel{
-    [self.activityImageView sd_setImageWithURL:[NSURL URLWithString:mainModel.image_big] placeholderImage:nil];
     
+    [self.activityImageView sd_setImageWithURL:[NSURL URLWithString:mainModel.image_big] placeholderImage:nil];
+            
     self.activityNameLabel.text = mainModel.title;
     self.activityNameLabel.textColor = [UIColor whiteColor];
     self.activityNameLabel.backgroundColor = [UIColor lightGrayColor];
     self.activityPriceLabel.text = mainModel.price;
     self.activityPriceLabel.textColor = [UIColor orangeColor];
+    
+    if ([mainModel.type integerValue]!= RecommendTypeActivity) {
+        self.activityDistanceBtn.hidden = YES;
+    }else{
+        self.activityDistanceBtn.hidden = NO;
+    }
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
