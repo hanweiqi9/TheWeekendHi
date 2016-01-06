@@ -38,7 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-
+    
     UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(selectCityAction:)];
     leftBarBtn.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = leftBarBtn;
@@ -66,7 +66,7 @@
     if (section == 0) {
         return self.activityArray.count;
     }
-     return  self.themeArray.count;
+    return  self.themeArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -75,7 +75,7 @@
     NSMutableArray *array = self.listArray[indexPath.section];
     mainCell.mainModel = array[indexPath.row];
     
-
+    
     return mainCell;
     
     
@@ -113,21 +113,22 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] init];
     UIImageView *sectionView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth/2 - 160, 5, 320, 16)];
-       if (section == 0) {
-           sectionView.image = [UIImage imageNamed:@"home_recommed_ac"];
+    if (section == 0) {
+        sectionView.image = [UIImage imageNamed:@"home_recommed_ac"];
     }else{
-       sectionView.image = [UIImage imageNamed:@"home_recommd_rc"];
+        sectionView.image = [UIImage imageNamed:@"home_recommd_rc"];
     }
     [view addSubview:sectionView];
     return view;
-
+    
+    
 }
-                                                                             
-                                                                             
+
+
 
 #pragma mark---------Custom Method
 
- //选择城市
+//选择城市
 -(void)selectCityAction:(UIBarButtonItem *)btn{
     SelectCityViewController *selectCity = [[SelectCityViewController alloc] init];
     [self presentViewController:selectCity animated:YES completion:nil];
@@ -138,12 +139,11 @@
     SearchViewController *searchVC = [[SearchViewController alloc] init];
     [self presentViewController:searchVC animated:YES completion:nil];
     
-    
 }
 //自定义tableView头部
 - (void)configTableViewHeaderView{
     UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 343)];
-        self.tableView.tableHeaderView = tableViewHeaderView;
+    self.tableView.tableHeaderView = tableViewHeaderView;
     
     //添加轮播图
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 186)];
@@ -151,14 +151,15 @@
     self.scrollView.pagingEnabled = YES;
     //不显示水平方向滚动
     self.scrollView.showsHorizontalScrollIndicator = NO;
-                                                                     
-     //创建小圆点
+    self.scrollView.delegate = self;
+    
+    //创建小圆点
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 156, kScreenWidth, 30)];
-     //小圆点个数和颜色
+    //小圆点个数和颜色
     self.pageControl.numberOfPages = self.adArray.count;
     self.pageControl.currentPageIndicatorTintColor = [UIColor cyanColor];
     
-   [self.pageControl addTarget:self action:@selector(pageSelectAction:) forControlEvents:UIControlEventEditingChanged];
+    [self.pageControl addTarget:self action:@selector(pageSelectAction:) forControlEvents:UIControlEventEditingChanged];
     self.scrollView.contentSize = CGSizeMake(self.adArray.count *kScreenWidth, 186);
     for (int i = 0;i < self.adArray.count ; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * i, 0, kScreenWidth, 186)];
@@ -166,7 +167,7 @@
         [self.scrollView addSubview:imageView];
     }
     [tableViewHeaderView addSubview:self.scrollView];
-
+    
     //添加按钮
     for (int i = 0; i < 4; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -190,25 +191,23 @@
     [themeBtn setImage:[UIImage imageNamed:@"home_zhuanti"] forState:UIControlStateNormal];
     [themeBtn addTarget:self action:@selector(hotActivityButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [tableViewHeaderView addSubview:themeBtn];
-    [tableViewHeaderView addSubview:self.pageControl];
-
     
-   
+    [tableViewHeaderView addSubview:self.pageControl];
     
 }
-                                                                                                  
+
 #pragma mark-------------首页轮播图
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
- //第一步：获取scrollView页面的宽度
+    //第一步：获取scrollView页面的宽度
     CGFloat pageWidth = self.scrollView.frame.size.width;
-  //第二步：获取偏移量
+    //第二步：获取偏移量
     CGPoint offset = self.scrollView.contentOffset;
-  //第三步：通过偏移量和页面宽度计算出当前页面
+    //第三步：通过偏移量和页面宽度计算出当前页面
     NSInteger pageNumber = offset.x/pageWidth;
     self.pageControl.currentPage = pageNumber;
 }
 
-                                                                                                  
+
 - (void)pageSelectAction:(UIPageControl *)pageControl{
     //第一步：获取pageControl点击的页面在第几页
     NSInteger pageNumber = pageControl.currentPage;
@@ -275,9 +274,9 @@
     
 }
 
-  //分类列表界面
+//分类列表界面
 - (void)mainActivityButtonAction:(UIButton *)btn{
-
+    
     ClassifyViewController *classVC = [[ClassifyViewController alloc] init];
     [self.navigationController pushViewController:classVC animated:YES];
 }
@@ -292,7 +291,7 @@
     [self.navigationController pushViewController:hotVC animated:YES];
 }
 
-    
+
 #pragma mark------------懒加载，接收数据的数组
 - (NSMutableArray *)listArray{
     if (_listArray == nil) {
@@ -328,13 +327,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
