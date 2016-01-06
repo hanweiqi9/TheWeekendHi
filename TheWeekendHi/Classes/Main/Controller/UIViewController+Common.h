@@ -1,5 +1,5 @@
 //
-//  ActivityViewController.h
+//  UIViewController+Common.h
 //  TheWeekendHi
 //
 //  Created by scjy on 16/1/6.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ActivityViewController : UIViewController
-@property(nonatomic,copy) NSString *activityId;
+@interface UIViewController (Common)
+
+-(void)showBackBtn;
+
 @end

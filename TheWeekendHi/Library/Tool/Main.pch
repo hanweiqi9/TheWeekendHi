@@ -13,6 +13,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #import "Header.h"
+#import "UIViewController+Common.h"
 
 //屏幕宽高
 #define kScreenWidth   [UIScreen mainScreen].bounds.size.width

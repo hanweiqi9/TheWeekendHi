@@ -30,6 +30,9 @@
 @property(nonatomic,strong) NSMutableArray *adArray;
 @property(nonatomic,strong) UIScrollView * scrollView;
 @property(nonatomic, strong) UIPageControl *pageControl;
+@property(nonatomic,strong) UIView *tableViewHeaderView;
+//定时器，用于滚动播放
+@property(nonatomic,strong) NSTimer *timer;
 @end
 
 @implementation MainViewController
@@ -59,6 +62,9 @@
     
     //请求网络数据
     [self requestModel];
+    
+    //启动定时器
+    [self startTimer];
 }
 
 #pragma mark-------------UITableViewDataSource
@@ -71,16 +77,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MainTableViewCell *mainCell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
     NSMutableArray *array = self.listArray[indexPath.section];
     mainCell.mainModel = array[indexPath.row];
-    
-    
     return mainCell;
-    
-    
-}
 
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -142,8 +143,8 @@
 }
 //自定义tableView头部
 - (void)configTableViewHeaderView{
-    UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 343)];
-    self.tableView.tableHeaderView = tableViewHeaderView;
+    self.tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 343)];
+    self.tableView.tableHeaderView = self.tableViewHeaderView;
     
     //添加轮播图
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 186)];
@@ -158,15 +159,24 @@
     //小圆点个数和颜色
     self.pageControl.numberOfPages = self.adArray.count;
     self.pageControl.currentPageIndicatorTintColor = [UIColor cyanColor];
-    
-    [self.pageControl addTarget:self action:@selector(pageSelectAction:) forControlEvents:UIControlEventEditingChanged];
+   
+    [self.pageControl addTarget:self action:@selector(pageSelectAction:) forControlEvents:UIControlEventValueChanged];
     self.scrollView.contentSize = CGSizeMake(self.adArray.count *kScreenWidth, 186);
     for (int i = 0;i < self.adArray.count ; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * i, 0, kScreenWidth, 186)];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:self.adArray[i]] placeholderImage:nil];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:self.adArray[i][@"url"]] placeholderImage:nil];
+        imageView.userInteractionEnabled = YES;
         [self.scrollView addSubview:imageView];
+        
+        UIButton *touchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        touchBtn.frame = imageView.frame;
+        touchBtn.tag = 100 + i;
+        [touchBtn addTarget:self action:@selector(touchAdvertisement:) forControlEvents:UIControlEventTouchUpInside];
+        [self.scrollView addSubview:touchBtn];
+        
+        
     }
-    [tableViewHeaderView addSubview:self.scrollView];
+    [self.tableViewHeaderView addSubview:self.scrollView];
     
     //添加按钮
     for (int i = 0; i < 4; i++) {
@@ -176,24 +186,61 @@
         [btn setImage:[UIImage imageNamed:imageStr] forState:UIControlStateNormal];
         btn.tag = 100 + i;
         [btn addTarget:self action:@selector(mainActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [tableViewHeaderView addSubview:btn];
+        [self.tableViewHeaderView addSubview:btn];
     }
     
-    //精选活动/热门专题
+    //精选活动按钮
     UIButton *activityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     activityBtn.frame = CGRectMake(0, 186 +kScreenWidth / 4, kScreenWidth/2,343-186- kScreenWidth / 4);
     [activityBtn setImage:[UIImage imageNamed:@"home_huodong"] forState:UIControlStateNormal];
     [activityBtn addTarget:self action:@selector(goodActivityButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    [tableViewHeaderView addSubview:activityBtn];
+    [self.tableViewHeaderView addSubview:activityBtn];
     
+    //热门专题按钮
     UIButton *themeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     themeBtn.frame = CGRectMake(kScreenWidth/2, 186+kScreenWidth / 4, kScreenWidth/2,343-186- kScreenWidth / 4);
     [themeBtn setImage:[UIImage imageNamed:@"home_zhuanti"] forState:UIControlStateNormal];
     [themeBtn addTarget:self action:@selector(hotActivityButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    [tableViewHeaderView addSubview:themeBtn];
+    [self.tableViewHeaderView addSubview:themeBtn];
     
-    [tableViewHeaderView addSubview:self.pageControl];
+    [self.tableViewHeaderView addSubview:self.pageControl];
     
+}
+
+
+
+#pragma mark----------轮播图
+- (void)startTimer{
+    //防止定时器重复创建
+    if (self.timer != nil) {
+        return;
+    }
+    self.timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(rollAnimation) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+//每2秒执行一次，图片自动轮播
+- (void)rollAnimation{
+    //把pageg当前页加1
+    NSInteger page = (self.pageControl.currentPage + 1)%self.adArray.count;
+   self.pageControl.currentPage  = page;
+       //计算出scrollView应该滚动的坐标
+    CGFloat offsetx = self.pageControl.currentPage * kScreenWidth;
+    [self.scrollView setContentOffset:CGPointMake(offsetx, 0) animated:YES];
+   
+}
+
+//当手动去滑动scrollView的时候，定时器仍然在计算时间，可能我们刚刚滑动到下一页，定时器时间刚好触发，导致在当前页停留的时间不到2秒
+//解决方案在scrollView开始移动的时候结束定时器
+//在scrollView移动完毕的时候在启动定时器
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    //停止定时器
+    [self.timer invalidate];
+    self.timer = nil;//停止定时器后并置为nil，再次启动定时器才能保证正常执行
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self startTimer];
 }
 
 #pragma mark-------------首页轮播图
@@ -207,7 +254,7 @@
     self.pageControl.currentPage = pageNumber;
 }
 
-
+//pageControll点击方法
 - (void)pageSelectAction:(UIPageControl *)pageControl{
     //第一步：获取pageControl点击的页面在第几页
     NSInteger pageNumber = pageControl.currentPage;
@@ -221,9 +268,7 @@
     AFHTTPSessionManager *sessionManage = [AFHTTPSessionManager manager];
     sessionManage.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [sessionManage GET:kMainDataList parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        HWQLog(@"%lld",downloadProgress.totalUnitCount);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        HWQLog(@"%@",responseObject);
         
         NSDictionary *resultDic = responseObject;
         NSString *status = resultDic[@"status"];
@@ -252,7 +297,8 @@
             //广告
             NSArray *adDataArray = dic[@"adData"];
             for (NSDictionary *dic in adDataArray) {
-                [self.adArray addObject:dic[@"url"]];
+                NSDictionary *dict = @{@"url":dic[@"url"],@"type":dic[@"type"],@"id":dic[@"id"]};
+                [self.adArray addObject:dict];
             }
             
             //拿到数据之后重新刷新请求configTableViewHeaderView
@@ -261,7 +307,6 @@
             
             //已请求回来的城市作为导航栏按钮标题
             self.navigationItem.leftBarButtonItem.title = cityName;
-            
             
             
         }else{
@@ -291,6 +336,21 @@
     [self.navigationController pushViewController:hotVC animated:YES];
 }
 
+//点击广告
+- (void)touchAdvertisement:(UIButton *)adBtn{
+    //从数组中的字典里取出type类型
+    NSString *type = self.adArray[adBtn.tag-100][@"type"];
+    if ([type integerValue] == 1) {
+        ActivityViewController *activityVC = [[ActivityViewController alloc] init];
+        activityVC.activityId = self.adArray[adBtn.tag - 100][@"id"];
+        [self.navigationController pushViewController:activityVC animated:YES];
+    }else{
+        HotViewController *hotVC = [[HotViewController alloc] init];
+        [self.navigationController pushViewController:hotVC animated:YES];
+    }
+    
+    
+}
 
 #pragma mark------------懒加载，接收数据的数组
 - (NSMutableArray *)listArray{
@@ -299,21 +359,21 @@
     }
     return _listArray;
 }
-
+//接收推荐活动的数组
 - (NSMutableArray *)activityArray{
     if (_activityArray == nil) {
         self.activityArray = [NSMutableArray new];
     }
     return _activityArray;
 }
-
+//接受推荐主题的数组
 - (NSMutableArray *)themeArray{
     if (_themeArray == nil) {
         self.themeArray = [NSMutableArray new];
     }
     return _themeArray;
 }
-
+//接受广告的数组
 - (NSMutableArray *)adArray{
     if (_adArray == nil) {
         self.adArray = [NSMutableArray new];
