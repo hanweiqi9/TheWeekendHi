@@ -12,6 +12,10 @@
 #import "ActivityView.h"
 
 @interface ActivityViewController ()
+{
+    NSString *_phoneNumber;
+}
+
 @property (strong, nonatomic) IBOutlet ActivityView *activityView;
 
 @end
@@ -24,11 +28,35 @@
     self.navigationItem.title = @"活动详情";
     [self showBackBtn];
     
+    //去地图页面
+    
+    [self.activityView.mapBtn addTarget:self action:@selector(mapBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //打电话
+    [self.activityView.makeCallBtn addTarget:self action:@selector(makeCallBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
     
     
     
     [self getModel];
+}
+
+//去地图页
+- (void)mapBtnAction:(UIButton *)btn{
+    
+}
+
+//大电话页面
+- (void)makeCallBtnAction:(UIButton *)btn{
+    //程序内打电话，打完之后不返回当前程序
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",_phoneNumber]]];
+    //程序外打电话，打完电话之后返回当前程序
+    UIWebView *cellPhoneWebView = [[UIWebView alloc]init];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",_phoneNumber]]];
+
+    
+    [cellPhoneWebView loadRequest:request];
+    
 }
 
 #pragma mark-----------------CustomMethod
@@ -51,6 +79,8 @@
         if ([status isEqualToString:@"success"]&&code == 0) {
             NSDictionary *successDic = dic[@"success"];
             self.activityView.dataDic = successDic;
+            _phoneNumber = dic[@"tel"];
+            
             
             
         }else{

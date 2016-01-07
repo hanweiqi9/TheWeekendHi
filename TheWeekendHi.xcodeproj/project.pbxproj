@@ -11,6 +11,8 @@
 		7A372F6B1C3B7FA000892207 /* main.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A372F6A1C3B7FA000892207 /* main.plist */; };
 		7A372F6E1C3BA07300892207 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A372F6D1C3BA07300892207 /* MainModel.m */; };
 		7A3883A91C3E10DB006584F9 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3883A81C3E10DB006584F9 /* ActivityView.m */; };
+		7A3883AC1C3E4C34006584F9 /* HWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3883AB1C3E4C34006584F9 /* HWTools.m */; };
+		7A3883AF1C3E5B14006584F9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3883AE1C3E5B14006584F9 /* UIView+Extension.m */; };
 		7A58671F1C3CBC4B00090519 /* SelectCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A58671E1C3CBC4B00090519 /* SelectCityViewController.m */; };
 		7A5867221C3CBD9300090519 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5867211C3CBD9300090519 /* SearchViewController.m */; };
 		7A5867251C3CBE6F00090519 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5867241C3CBE6F00090519 /* ActivityViewController.m */; };
@@ -60,6 +62,10 @@
 		7A372F6D1C3BA07300892207 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
 		7A3883A71C3E10DB006584F9 /* ActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityView.h; sourceTree = "<group>"; };
 		7A3883A81C3E10DB006584F9 /* ActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
+		7A3883AA1C3E4C34006584F9 /* HWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTools.h; sourceTree = "<group>"; };
+		7A3883AB1C3E4C34006584F9 /* HWTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTools.m; sourceTree = "<group>"; };
+		7A3883AD1C3E5B14006584F9 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Extension.h"; path = "../../Classes/Main/Views/UIView+Extension.h"; sourceTree = "<group>"; };
+		7A3883AE1C3E5B14006584F9 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extension.m"; path = "../../Classes/Main/Views/UIView+Extension.m"; sourceTree = "<group>"; };
 		7A5867181C3CAE6400090519 /* Main.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main.pch; sourceTree = "<group>"; };
 		7A58671A1C3CB31C00090519 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		7A58671D1C3CBC4B00090519 /* SelectCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCityViewController.h; sourceTree = "<group>"; };
@@ -139,8 +145,12 @@
 			children = (
 				7A5867341C3D201B00090519 /* UIViewController+Common.h */,
 				7A5867351C3D201B00090519 /* UIViewController+Common.m */,
+				7A3883AD1C3E5B14006584F9 /* UIView+Extension.h */,
+				7A3883AE1C3E5B14006584F9 /* UIView+Extension.m */,
 				7A5867181C3CAE6400090519 /* Main.pch */,
 				7A58671A1C3CB31C00090519 /* Header.h */,
+				7A3883AA1C3E4C34006584F9 /* HWTools.h */,
+				7A3883AB1C3E4C34006584F9 /* HWTools.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -562,6 +572,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A3883AF1C3E5B14006584F9 /* UIView+Extension.m in Sources */,
+				7A3883AC1C3E4C34006584F9 /* HWTools.m in Sources */,
 				7A58672B1C3CBFE600090519 /* ClassifyViewController.m in Sources */,
 				7A3883A91C3E10DB006584F9 /* ActivityView.m in Sources */,
 				7A9D91C71C3A766D00B72CF9 /* MainTableViewCell.m in Sources */,
