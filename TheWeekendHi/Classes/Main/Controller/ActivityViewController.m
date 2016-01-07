@@ -9,9 +9,10 @@
 #import "ActivityViewController.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import <MBProgressHUD.h>
+#import "ActivityView.h"
 
 @interface ActivityViewController ()
-
+@property (strong, nonatomic) IBOutlet ActivityView *activityView;
 
 @end
 
@@ -22,7 +23,11 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"活动详情";
     [self showBackBtn];
-        
+    
+    
+    
+    
+    
     [self getModel];
 }
 
@@ -39,6 +44,18 @@
         NSLog(@"%@",responseObject);
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        NSDictionary *dic = responseObject;
+        NSString *status = dic[@"status"];
+        NSInteger code = [dic[@"code"]integerValue];
+        if ([status isEqualToString:@"success"]&&code == 0) {
+            NSDictionary *successDic = dic[@"success"];
+            self.activityView.dataDic = successDic;
+            
+            
+        }else{
+            
+        }
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
