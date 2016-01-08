@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		06B387C457BE1E7BA1202EC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA1708193465F7593E9096E /* libPods.a */; };
+		7A12FAF21C3FA1BE00E47072 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAEE1C3FA1BE00E47072 /* blueArrow.png */; };
+		7A12FAF31C3FA1BE00E47072 /* blueArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAEF1C3FA1BE00E47072 /* blueArrowDown.png */; };
+		7A12FAF41C3FA1BE00E47072 /* PullingRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12FAF11C3FA1BE00E47072 /* PullingRefreshTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7A12FAFB1C3FA3C200E47072 /* GoodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12FAF91C3FA3C200E47072 /* GoodTableViewCell.m */; };
+		7A12FAFC1C3FA3C200E47072 /* GoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAFA1C3FA3C200E47072 /* GoodTableViewCell.xib */; };
+		7A12FAFE1C3FB76C00E47072 /* good.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAFD1C3FB76C00E47072 /* good.plist */; };
+		7A12FB011C3FBE4600E47072 /* GoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12FB001C3FBE4600E47072 /* GoodModel.m */; };
 		7A372F6B1C3B7FA000892207 /* main.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A372F6A1C3B7FA000892207 /* main.plist */; };
 		7A372F6E1C3BA07300892207 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A372F6D1C3BA07300892207 /* MainModel.m */; };
 		7A3883A91C3E10DB006584F9 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3883A81C3E10DB006584F9 /* ActivityView.m */; };
@@ -59,6 +66,16 @@
 
 /* Begin PBXFileReference section */
 		1BA1708193465F7593E9096E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A12FAEE1C3FA1BE00E47072 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		7A12FAEF1C3FA1BE00E47072 /* blueArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrowDown.png; sourceTree = "<group>"; };
+		7A12FAF01C3FA1BE00E47072 /* PullingRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullingRefreshTableView.h; sourceTree = "<group>"; };
+		7A12FAF11C3FA1BE00E47072 /* PullingRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullingRefreshTableView.m; sourceTree = "<group>"; };
+		7A12FAF81C3FA3C200E47072 /* GoodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodTableViewCell.h; sourceTree = "<group>"; };
+		7A12FAF91C3FA3C200E47072 /* GoodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodTableViewCell.m; sourceTree = "<group>"; };
+		7A12FAFA1C3FA3C200E47072 /* GoodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodTableViewCell.xib; sourceTree = "<group>"; };
+		7A12FAFD1C3FB76C00E47072 /* good.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = good.plist; sourceTree = "<group>"; };
+		7A12FAFF1C3FBE4600E47072 /* GoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodModel.h; sourceTree = "<group>"; };
+		7A12FB001C3FBE4600E47072 /* GoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodModel.m; sourceTree = "<group>"; };
 		7A372F6A1C3B7FA000892207 /* main.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = main.plist; path = ../Controller/main.plist; sourceTree = "<group>"; };
 		7A372F6C1C3BA07300892207 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		7A372F6D1C3BA07300892207 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
@@ -145,6 +162,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A12FAED1C3FA1BE00E47072 /* PullingRefreshTableView */ = {
+			isa = PBXGroup;
+			children = (
+				7A12FAEE1C3FA1BE00E47072 /* blueArrow.png */,
+				7A12FAEF1C3FA1BE00E47072 /* blueArrowDown.png */,
+				7A12FAF01C3FA1BE00E47072 /* PullingRefreshTableView.h */,
+				7A12FAF11C3FA1BE00E47072 /* PullingRefreshTableView.m */,
+			);
+			path = PullingRefreshTableView;
+			sourceTree = "<group>";
+		};
 		7A5867171C3CAE6400090519 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +335,9 @@
 				7A372F6C1C3BA07300892207 /* MainModel.h */,
 				7A372F6D1C3BA07300892207 /* MainModel.m */,
 				7A5867321C3D1B0300090519 /* avtivity.plist */,
+				7A12FAFD1C3FB76C00E47072 /* good.plist */,
+				7A12FAFF1C3FBE4600E47072 /* GoodModel.h */,
+				7A12FB001C3FBE4600E47072 /* GoodModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +353,9 @@
 				7A3883A81C3E10DB006584F9 /* ActivityView.m */,
 				7A6D73041C3F5ECD00B6F89E /* ThemeView.h */,
 				7A6D73051C3F5ECD00B6F89E /* ThemeView.m */,
+				7A12FAF81C3FA3C200E47072 /* GoodTableViewCell.h */,
+				7A12FAF91C3FA3C200E47072 /* GoodTableViewCell.m */,
+				7A12FAFA1C3FA3C200E47072 /* GoodTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,6 +397,7 @@
 		7A9D91BC1C3A4FC100B72CF9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7A12FAED1C3FA1BE00E47072 /* PullingRefreshTableView */,
 				7A5867171C3CAE6400090519 /* Tool */,
 			);
 			path = Library;
@@ -502,11 +537,15 @@
 			files = (
 				7A9D91C81C3A766D00B72CF9 /* MainTableViewCell.xib in Resources */,
 				7A372F6B1C3B7FA000892207 /* main.plist in Resources */,
+				7A12FAFC1C3FA3C200E47072 /* GoodTableViewCell.xib in Resources */,
 				7A9D91C31C3A50CE00B72CF9 /* Discover.storyboard in Resources */,
 				7A9D914F1C3A1C3900B72CF9 /* Assets.xcassets in Resources */,
+				7A12FAF31C3FA1BE00E47072 /* blueArrowDown.png in Resources */,
+				7A12FAFE1C3FB76C00E47072 /* good.plist in Resources */,
 				7A6D73031C3F5D5A00B6F89E /* theme.plist in Resources */,
 				7A5867331C3D1B0300090519 /* avtivity.plist in Resources */,
 				7A9D91BF1C3A506F00B72CF9 /* Main.storyboard in Resources */,
+				7A12FAF21C3FA1BE00E47072 /* blueArrow.png in Resources */,
 				7A9D91C11C3A508E00B72CF9 /* Mine.storyboard in Resources */,
 				7A9D91521C3A1C3900B72CF9 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -584,16 +623,19 @@
 				7A3883AF1C3E5B14006584F9 /* UIView+Extension.m in Sources */,
 				7A3883AC1C3E4C34006584F9 /* HWTools.m in Sources */,
 				7A58672B1C3CBFE600090519 /* ClassifyViewController.m in Sources */,
+				7A12FAFB1C3FA3C200E47072 /* GoodTableViewCell.m in Sources */,
 				7A3883A91C3E10DB006584F9 /* ActivityView.m in Sources */,
 				7A9D91C71C3A766D00B72CF9 /* MainTableViewCell.m in Sources */,
 				7A9D919B1C3A4D2000B72CF9 /* AppDelegate.m in Sources */,
 				7A9D914A1C3A1C3900B72CF9 /* main.m in Sources */,
+				7A12FB011C3FBE4600E47072 /* GoodModel.m in Sources */,
 				7A9D91B91C3A4F4100B72CF9 /* FineViewController.m in Sources */,
 				7A5867221C3CBD9300090519 /* SearchViewController.m in Sources */,
 				7A9D91BA1C3A4F4100B72CF9 /* MainViewController.m in Sources */,
 				7A5867281C3CBF4B00090519 /* ThemeViewController.m in Sources */,
 				7A5867311C3CC0DF00090519 /* HotViewController.m in Sources */,
 				7A58671F1C3CBC4B00090519 /* SelectCityViewController.m in Sources */,
+				7A12FAF41C3FA1BE00E47072 /* PullingRefreshTableView.m in Sources */,
 				7A9D91BB1C3A4F4100B72CF9 /* MeViewController.m in Sources */,
 				7A58672E1C3CC0D600090519 /* GoodViewController.m in Sources */,
 				7A6D73061C3F5ECD00B6F89E /* ThemeView.m in Sources */,

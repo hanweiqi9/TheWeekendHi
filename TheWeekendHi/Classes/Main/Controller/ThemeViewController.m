@@ -38,20 +38,21 @@
 
 #pragma mark-------------getModel
 - (void)getModel{
+
     
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",kActivityTheme,self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
+    [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",KactivityThem,self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSLog(@"%@",downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-       
+        
         NSDictionary *dic = responseObject;
         NSString *status = dic[@"status"];
         NSInteger code = [dic[@"code"] integerValue];
         if ([status isEqualToString:@"success"]&&code ==0) {
             self.themeView.dataDic = dic[@"success"];
             self.navigationItem.title = dic[@"success"][@"title"];
-            
+           
             
         }else{
             

@@ -48,7 +48,7 @@
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"image"]] placeholderImage:nil];
     
       [self drawContentWithArray:dataDic[@"content"]];
-    
+    HWQLog(@"%@",dataDic[@"content"]);
 }
 
 -(void)drawContentWithArray:(NSArray *)contentArray{

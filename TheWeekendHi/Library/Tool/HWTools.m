@@ -19,6 +19,16 @@
     return timeStr;
 }
 
+
++(NSDate *)getSystemNowDate{
+    //创建一个NSDataFormatter显示刷新时间
+    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    df.dateFormat = @"yyyy-MM-dd HH:mm";
+    NSString *dateStr = [df stringFromDate:[NSDate date]];
+    NSDate *date = [df dateFromString:dateStr];
+    return date;
+}
+
 +(CGFloat)getTextHeightWithBigestSize:(NSString *)text BigestSize:(CGSize)bigSize textFont:(CGFloat)font {
        
     CGRect textRect = [text boundingRectWithSize:bigSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil];

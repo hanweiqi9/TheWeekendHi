@@ -62,7 +62,7 @@
     
     
     //请求网络数据
-    [self requestModel];
+//    [self requestModel];
     
     //启动定时器
     [self startTimer];
@@ -347,7 +347,9 @@
 }
 //精选活动
 - (void)goodActivityButtonAction{
+    
     GoodViewController *goodVC = [[GoodViewController alloc] init];
+    self.tabBarController.tabBar.hidden = YES;
     [self.navigationController pushViewController:goodVC animated:YES];
 }
 //热门专题
