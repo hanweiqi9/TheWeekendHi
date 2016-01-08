@@ -16,6 +16,7 @@
     CGFloat _previousImageBottom;
     //
     CGFloat _lastLabelBottom;
+    CGFloat _hintLabelHeight;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -29,12 +30,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 
+
 @end
 
 @implementation ActivityView
 
 -(void)awakeFromNib{
-    self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, 5000);
+    self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, 6000);
 }
 
 //在set方法中赋值
@@ -58,12 +60,14 @@
     NSString *startTime = [HWTools getDateFromString:dataDic[@"new_start_date"]];
     NSString *endTime = [HWTools getDateFromString:dataDic[@"new_end_date"]];
     self.timeLabel.text = [NSString stringWithFormat:@"正在进行：%@-%@",startTime,endTime];
+    
+    self.str = dataDic[@"reminder"];
+   
     //活动详情
     [self drawContentWithArray:dataDic[@"content"]];
     
     
-    
-    
+     self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom +_hintLabelHeight);
     
 }
 
@@ -94,6 +98,7 @@
         [self.mainScrollView addSubview:label];
         //保留最后一个label的高度，+ 64是下边tabbar的高度
         _lastLabelBottom = label.bottom + 10 + 64;
+        
         
         NSArray *urlsArray = dic[@"urls"];
         if (urlsArray == nil) { //当某一个段落中没有图片的时候，上次图片的高度用上次label的底部高度+10
@@ -128,10 +133,30 @@
                 _previousImageBottom = imageView.bottom + 5;
                 if (urlsArray.count > 1) {
                     lastImgbottom = imageView.bottom;
+
                 }
             }
         }
     }
+    
+    UILabel *hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, _lastLabelBottom-_hintLabelHeight-50, kScreenWidth - 70, 30)];
+    hintLabel.text = @"温馨提示";
+    hintLabel.font = [UIFont systemFontOfSize:15.0];
+    [self.mainScrollView addSubview:hintLabel];
+    
+    _hintLabelHeight = [HWTools getTextHeightWithBigestSize:self.str BigestSize:CGSizeMake(kScreenWidth, 1000) textFont:15.0];
+    
+    UILabel *htLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, _lastLabelBottom, kScreenWidth - 20, _hintLabelHeight)];
+    htLabel.text = self.str;
+    htLabel.numberOfLines = 0;
+    htLabel.font = [UIFont systemFontOfSize:15.0];
+    [self.mainScrollView addSubview:htLabel];
+    
+    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(10, _lastLabelBottom-48, 20, 25)];
+    image.image = [UIImage imageNamed:@"list_like_heart"];
+    [self.mainScrollView addSubview:image];
+    
+    
 }
 
 

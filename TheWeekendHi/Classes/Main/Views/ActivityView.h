@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapBtn;
 @property (weak, nonatomic) IBOutlet UIButton *makeCallBtn;
 @property(nonatomic,strong) NSDictionary *dataDic;
+@property(nonatomic,strong) NSString *str;
 
 @end

@@ -14,6 +14,7 @@
 @interface ActivityViewController ()
 {
     NSString *_phoneNumber;
+    
 }
 
 @property (strong, nonatomic) IBOutlet ActivityView *activityView;
@@ -80,6 +81,7 @@
             NSDictionary *successDic = dic[@"success"];
             self.activityView.dataDic = successDic;
             _phoneNumber = dic[@"tel"];
+            
             
             
             
