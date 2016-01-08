@@ -19,6 +19,7 @@
 #import "GoodViewController.h"
 #import "HotViewController.h"
 
+
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 //全部列表数据
@@ -67,6 +68,13 @@
     [self startTimer];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    //隐藏tabBar
+    self.tabBarController.tabBar.hidden = NO;
+
+}
+
 #pragma mark-------------UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
@@ -82,19 +90,22 @@
     return mainCell;
 
 }
+#pragma mark----------------活动专题点击方法
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+     MainModel *model = self.listArray[indexPath.section][indexPath.row];
     if (indexPath.section == 0) {
         UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         ActivityViewController *activityVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ActivityVC"];
         //活动id
-        MainModel *model = self.listArray[indexPath.section][indexPath.row];
         activityVC.activityId = model.activityId;
         [self.navigationController pushViewController:activityVC animated:YES];
 
     }else{
+        
         ThemeViewController *themeVC = [[ThemeViewController alloc] init];
+        themeVC.themeid = model.activityId;
         [self.navigationController pushViewController:themeVC animated:YES];
         
     }
@@ -227,12 +238,15 @@
 //每2秒执行一次，图片自动轮播
 - (void)rollAnimation{
     //把pageg当前页加1
-    NSInteger page = (self.pageControl.currentPage + 1)%self.adArray.count;
-   self.pageControl.currentPage  = page;
-       //计算出scrollView应该滚动的坐标
-    CGFloat offsetx = self.pageControl.currentPage * kScreenWidth;
-    [self.scrollView setContentOffset:CGPointMake(offsetx, 0) animated:YES];
-   
+    //
+    if (self.adArray.count >0) {
+        NSInteger page = (self.pageControl.currentPage + 1)%self.adArray.count;
+        self.pageControl.currentPage  = page;
+        //计算出scrollView应该滚动的坐标
+        CGFloat offsetx = self.pageControl.currentPage * kScreenWidth;
+        [self.scrollView setContentOffset:CGPointMake(offsetx, 0) animated:YES];
+    }
+
 }
 
 //当手动去滑动scrollView的时候，定时器仍然在计算时间，可能我们刚刚滑动到下一页，定时器时间刚好触发，导致在当前页停留的时间不到2秒
@@ -354,8 +368,9 @@
         activityVC.activityId = self.adArray[adBtn.tag - 100][@"id"];
         [self.navigationController pushViewController:activityVC animated:YES];
     }else{
-        HotViewController *hotVC = [[HotViewController alloc] init];
-        [self.navigationController pushViewController:hotVC animated:YES];
+        ThemeViewController *themeVC = [[ThemeViewController alloc] init];
+        themeVC.themeid = self.adArray[adBtn.tag-100][@"id"];
+        [self.navigationController pushViewController:themeVC animated:YES];
     }
     
     

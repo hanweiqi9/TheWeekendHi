@@ -1,73 +1,53 @@
 //
-//  ActivityView.m
+//  ThemeView.m
 //  TheWeekendHi
 //
-//  Created by scjy on 16/1/7.
+//  Created by scjy on 16/1/8.
 //  Copyright © 2016年 芒果科技. All rights reserved.
 //
 
-#import "ActivityView.h"
+#import "ThemeView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-
-@interface ActivityView ()
+@interface ThemeView ()
 {
     //保存上一次图片底部的高度
     CGFloat _previousImageBottom;
     //
     CGFloat _lastLabelBottom;
-    CGFloat _hintLabelHeight;
+    
 }
 
-@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
-@property (weak, nonatomic) IBOutlet UILabel *activityTitleLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *favouriteLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-
-
+@property(nonatomic,strong) UIScrollView *mainScrollView;
+@property(nonatomic,strong) UIImageView *headImageView;
 
 @end
 
-@implementation ActivityView
+@implementation ThemeView
 
--(void)awakeFromNib{
-    self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, 6000);
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self configView];
+    }
+    return self;
 }
 
+- (void)configView{
+    
+    [self addSubview:self.mainScrollView];
+    [self.mainScrollView addSubview:self.headImageView];
+}
+
+
 //在set方法中赋值
-- (void)setDataDic:(NSDictionary *)dataDic{
+-(void)setDataDic:(NSDictionary *)dataDic{
     
-    //活动图片
-    NSArray *urls = dataDic[@"urls"];
-    NSString *str = urls[0];
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:nil];
-    //活动标题
-    self.activityTitleLabel.text = dataDic[@"title"];
-    //活动人
-    self.favouriteLabel.text = [NSString stringWithFormat:@"%@人已收藏",dataDic[@"fav"]];
-    //参考价格
-    self.priceLabel.text = [NSString stringWithFormat:@"价格参考：%@",dataDic[@"pricedesc"]] ;
-    //活动地址
-    self.addressLabel.text = dataDic[@"address"];
-    //活动电话
-    self.phoneLabel.text = dataDic[@"tel"];
-    //活动起止时间
-    NSString *startTime = [HWTools getDateFromString:dataDic[@"new_start_date"]];
-    NSString *endTime = [HWTools getDateFromString:dataDic[@"new_end_date"]];
-    self.timeLabel.text = [NSString stringWithFormat:@"正在进行：%@-%@",startTime,endTime];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"image"]] placeholderImage:nil];
     
-    self.str = dataDic[@"reminder"];
-   
-    //活动详情
-    [self drawContentWithArray:dataDic[@"content"]];
-    
-    
-    
+      [self drawContentWithArray:dataDic[@"content"]];
     
 }
 
@@ -77,10 +57,10 @@
         //每一段活动信息
         CGFloat height = [HWTools getTextHeightWithBigestSize:dic[@"description"] BigestSize:CGSizeMake(kScreenWidth, 1000) textFont:15.0];
         CGFloat y;
-        if (_previousImageBottom > 430) { //如果图片底部的高度没有值（也就是小于500）,也就说明是加载第一个lable，那么y的值不应该减去500
-            y = 430 + _previousImageBottom - 430;
+        if (_previousImageBottom > 186) { //如果图片底部的高度没有值（也就是小于500）,也就说明是加载第一个lable，那么y的值不应该减去500
+            y = 186 + _previousImageBottom - 186;
         } else {
-            y = 430 + _previousImageBottom;
+            y = 186 + _previousImageBottom;
         }
         NSString *title = dic[@"title"];
         if (title != nil) {
@@ -133,40 +113,43 @@
                 _previousImageBottom = imageView.bottom + 5;
                 if (urlsArray.count > 1) {
                     lastImgbottom = imageView.bottom;
-
+                    
                 }
             }
         }
     }
+    self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom);
+
+}
+
+
+- (UIScrollView *)mainScrollView{
+    if (_mainScrollView == nil) {
+        self.mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, 6000);
+        
+    }
+    return _mainScrollView;
+}
+
+- (UIImageView *)headImageView{
     
-    UILabel *hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, _lastLabelBottom-_hintLabelHeight-30, kScreenWidth - 70, 30)];
-    hintLabel.text = @"温馨提示";
-    hintLabel.font = [UIFont systemFontOfSize:15.0];
-    [self.mainScrollView addSubview:hintLabel];
+    if (_headImageView == nil) {
+        self.headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 186)];
+    }
+    return _headImageView;
     
-    _hintLabelHeight = [HWTools getTextHeightWithBigestSize:self.str BigestSize:CGSizeMake(kScreenWidth, 1000) textFont:15.0];
-    
-    UILabel *htLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, _lastLabelBottom, kScreenWidth - 20, _hintLabelHeight)];
-    htLabel.text = self.str;
-    htLabel.numberOfLines = 0;
-    htLabel.font = [UIFont systemFontOfSize:15.0];
-    [self.mainScrollView addSubview:htLabel];
-    
-    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(10, _lastLabelBottom-28, 20, 25)];
-    image.image = [UIImage imageNamed:@"list_like_heart"];
-    [self.mainScrollView addSubview:image];
-    
-     self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom +_hintLabelHeight+30);
 }
 
 
 
+
 /*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
 */
 
 @end

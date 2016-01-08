@@ -11,6 +11,7 @@
 
 @interface AppDelegate ()
 
+
 @end
 
 @implementation AppDelegate
@@ -56,7 +57,7 @@
     //添加被管理的试图控制器
     tabBarVC.viewControllers = @[mainNav,discoverNav,mineNav];
     
-    tabBarVC.tabBar.backgroundColor = [UIColor whiteColor];
+   tabBarVC.tabBar.backgroundColor = [UIColor whiteColor];
     
     self.window.rootViewController = tabBarVC;
     

@@ -2,6 +2,8 @@
 //  ActivityViewController.m
 //  TheWeekendHi
 //
+//  活动详情
+
 //  Created by scjy on 16/1/6.
 //  Copyright © 2016年 芒果科技. All rights reserved.
 //
@@ -28,7 +30,9 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"活动详情";
     [self showBackBtn];
-    
+    //隐藏tabBar
+    self.tabBarController.tabBar.hidden = YES;
+        
     //去地图页面
     
     [self.activityView.mapBtn addTarget:self action:@selector(mapBtnAction:) forControlEvents:UIControlEventTouchUpInside];
