@@ -29,6 +29,10 @@
 		7A5867311C3CC0DF00090519 /* HotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5867301C3CC0DF00090519 /* HotViewController.m */; };
 		7A5867331C3D1B0300090519 /* avtivity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5867321C3D1B0300090519 /* avtivity.plist */; };
 		7A5867361C3D201B00090519 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5867351C3D201B00090519 /* UIViewController+Common.m */; };
+		7A623EF51C40ECBF003B4FCE /* HotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A623EF31C40ECBF003B4FCE /* HotTableViewCell.m */; };
+		7A623EF61C40ECBF003B4FCE /* HotTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A623EF41C40ECBF003B4FCE /* HotTableViewCell.xib */; };
+		7A623EF81C40ED59003B4FCE /* hotModel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A623EF71C40ED59003B4FCE /* hotModel.plist */; };
+		7A623EFB1C40F3DE003B4FCE /* HotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A623EFA1C40F3DE003B4FCE /* HotModel.m */; };
 		7A6D73031C3F5D5A00B6F89E /* theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A6D73021C3F5D5A00B6F89E /* theme.plist */; };
 		7A6D73061C3F5ECD00B6F89E /* ThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D73051C3F5ECD00B6F89E /* ThemeView.m */; };
 		7A9D914A1C3A1C3900B72CF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D91491C3A1C3900B72CF9 /* main.m */; };
@@ -104,6 +108,12 @@
 		7A5867321C3D1B0300090519 /* avtivity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = avtivity.plist; sourceTree = "<group>"; };
 		7A5867341C3D201B00090519 /* UIViewController+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Common.h"; path = "../../Classes/Main/Controller/UIViewController+Common.h"; sourceTree = "<group>"; };
 		7A5867351C3D201B00090519 /* UIViewController+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Common.m"; path = "../../Classes/Main/Controller/UIViewController+Common.m"; sourceTree = "<group>"; };
+		7A623EF21C40ECBF003B4FCE /* HotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotTableViewCell.h; path = ../Model/HotTableViewCell.h; sourceTree = "<group>"; };
+		7A623EF31C40ECBF003B4FCE /* HotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotTableViewCell.m; path = ../Model/HotTableViewCell.m; sourceTree = "<group>"; };
+		7A623EF41C40ECBF003B4FCE /* HotTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotTableViewCell.xib; path = ../Model/HotTableViewCell.xib; sourceTree = "<group>"; };
+		7A623EF71C40ED59003B4FCE /* hotModel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotModel.plist; sourceTree = "<group>"; };
+		7A623EF91C40F3DE003B4FCE /* HotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotModel.h; sourceTree = "<group>"; };
+		7A623EFA1C40F3DE003B4FCE /* HotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotModel.m; sourceTree = "<group>"; };
 		7A6D73021C3F5D5A00B6F89E /* theme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = theme.plist; path = ../Controller/theme.plist; sourceTree = "<group>"; };
 		7A6D73041C3F5ECD00B6F89E /* ThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeView.h; sourceTree = "<group>"; };
 		7A6D73051C3F5ECD00B6F89E /* ThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeView.m; sourceTree = "<group>"; };
@@ -338,6 +348,9 @@
 				7A12FAFD1C3FB76C00E47072 /* good.plist */,
 				7A12FAFF1C3FBE4600E47072 /* GoodModel.h */,
 				7A12FB001C3FBE4600E47072 /* GoodModel.m */,
+				7A623EF71C40ED59003B4FCE /* hotModel.plist */,
+				7A623EF91C40F3DE003B4FCE /* HotModel.h */,
+				7A623EFA1C40F3DE003B4FCE /* HotModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,6 +362,9 @@
 				7A9D91C41C3A766C00B72CF9 /* MainTableViewCell.h */,
 				7A9D91C51C3A766D00B72CF9 /* MainTableViewCell.m */,
 				7A9D91C61C3A766D00B72CF9 /* MainTableViewCell.xib */,
+				7A623EF21C40ECBF003B4FCE /* HotTableViewCell.h */,
+				7A623EF31C40ECBF003B4FCE /* HotTableViewCell.m */,
+				7A623EF41C40ECBF003B4FCE /* HotTableViewCell.xib */,
 				7A3883A71C3E10DB006584F9 /* ActivityView.h */,
 				7A3883A81C3E10DB006584F9 /* ActivityView.m */,
 				7A6D73041C3F5ECD00B6F89E /* ThemeView.h */,
@@ -546,8 +562,10 @@
 				7A5867331C3D1B0300090519 /* avtivity.plist in Resources */,
 				7A9D91BF1C3A506F00B72CF9 /* Main.storyboard in Resources */,
 				7A12FAF21C3FA1BE00E47072 /* blueArrow.png in Resources */,
+				7A623EF81C40ED59003B4FCE /* hotModel.plist in Resources */,
 				7A9D91C11C3A508E00B72CF9 /* Mine.storyboard in Resources */,
 				7A9D91521C3A1C3900B72CF9 /* LaunchScreen.storyboard in Resources */,
+				7A623EF61C40ECBF003B4FCE /* HotTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A3883AF1C3E5B14006584F9 /* UIView+Extension.m in Sources */,
+				7A623EFB1C40F3DE003B4FCE /* HotModel.m in Sources */,
 				7A3883AC1C3E4C34006584F9 /* HWTools.m in Sources */,
 				7A58672B1C3CBFE600090519 /* ClassifyViewController.m in Sources */,
 				7A12FAFB1C3FA3C200E47072 /* GoodTableViewCell.m in Sources */,
@@ -637,6 +656,7 @@
 				7A58671F1C3CBC4B00090519 /* SelectCityViewController.m in Sources */,
 				7A12FAF41C3FA1BE00E47072 /* PullingRefreshTableView.m in Sources */,
 				7A9D91BB1C3A4F4100B72CF9 /* MeViewController.m in Sources */,
+				7A623EF51C40ECBF003B4FCE /* HotTableViewCell.m in Sources */,
 				7A58672E1C3CC0D600090519 /* GoodViewController.m in Sources */,
 				7A6D73061C3F5ECD00B6F89E /* ThemeView.m in Sources */,
 				7A372F6E1C3BA07300892207 /* MainModel.m in Sources */,

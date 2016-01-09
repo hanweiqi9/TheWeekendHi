@@ -30,6 +30,8 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"活动详情";
     [self showBackBtn];
+    
+    [self rightBtn];
     //隐藏tabBar
     self.tabBarController.tabBar.hidden = YES;
         

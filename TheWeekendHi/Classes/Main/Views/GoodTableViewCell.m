@@ -16,8 +16,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UIButton *loveCountBtn;
+
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *likeLabel;
 
 
 
@@ -38,6 +39,7 @@
     self.titleLabel.text = model.title;
     self.priceLabel.text = model.price;
     self.ageLabel.text = model.age;
+//    self.likeLabel.text = model.counts;
     
 }
 

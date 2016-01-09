@@ -82,7 +82,7 @@
         
         NSArray *urlsArray = dic[@"urls"];
         if (urlsArray == nil) { //当某一个段落中没有图片的时候，上次图片的高度用上次label的底部高度+10
-            _previousImageBottom = label.bottom + 10;
+            _previousImageBottom = label.bottom + 15;
         } else {
             CGFloat lastImgbottom = 0.0;
             for (NSDictionary *urlDic in urlsArray) {
@@ -91,12 +91,12 @@
                     //图片不止一张的情况
                     if (lastImgbottom == 0.0) {
                         if (title != nil) { //有title的算上title的30像素
-                            imgY = _previousImageBottom + label.height + 30 + 5;
+                            imgY = _previousImageBottom + label.height + 30 + 10;
                         } else {
-                            imgY = _previousImageBottom + label.height + 5;
+                            imgY = _previousImageBottom + label.height + 10;
                         }
                     } else {
-                        imgY = lastImgbottom + 10;
+                        imgY = lastImgbottom + 15;
                     }
                     
                 } else {
@@ -118,7 +118,7 @@
             }
         }
     }
-    self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom);
+    self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom + 300);
 
 }
 
@@ -126,7 +126,7 @@
 - (UIScrollView *)mainScrollView{
     if (_mainScrollView == nil) {
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
-        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, 6000);
+        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, 10000);
         
     }
     return _mainScrollView;

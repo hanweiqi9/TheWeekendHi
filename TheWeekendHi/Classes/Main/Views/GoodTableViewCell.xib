@@ -40,14 +40,19 @@
                         <color key="textColor" red="1" green="0.47952576320000001" blue="0.40316226440000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd2-I9-ecu">
-                        <rect key="frame" x="290" y="56" width="46" height="30"/>
-                        <state key="normal" title="Button"/>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7V-tT-ift">
                         <rect key="frame" x="97" y="34" width="52" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="list_like_heart" translatesAutoresizingMaskIntoConstraints="NO" id="iSQ-U8-NLC">
+                        <rect key="frame" x="283" y="66" width="25" height="25"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4D-XG-tgc">
+                        <rect key="frame" x="310" y="70" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -56,7 +61,7 @@
                 <outlet property="ageLabel" destination="S7V-tT-ift" id="lZR-lQ-9p3"/>
                 <outlet property="distanceLabel" destination="pai-zq-qmj" id="CJG-eH-sVh"/>
                 <outlet property="headImageView" destination="cJJ-3S-eh7" id="11L-tc-fpx"/>
-                <outlet property="loveCountBtn" destination="Dd2-I9-ecu" id="hJw-5V-GEs"/>
+                <outlet property="likeLabel" destination="f4D-XG-tgc" id="yIs-HM-TF0"/>
                 <outlet property="priceLabel" destination="u0D-sd-7iu" id="5VZ-ae-olr"/>
                 <outlet property="titleLabel" destination="1sD-up-wjv" id="kdW-MQ-EyY"/>
             </connections>
@@ -65,5 +70,6 @@
     </objects>
     <resources>
         <image name="age_bg" width="25" height="12"/>
+        <image name="list_like_heart" width="25" height="25"/>
     </resources>
 </document>

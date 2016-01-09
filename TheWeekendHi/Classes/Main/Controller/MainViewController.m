@@ -47,13 +47,14 @@
     leftBarBtn.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = leftBarBtn;
     
-    //right
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(0, 0, 20, 20);
-    [rightBtn setImage:[UIImage imageNamed:@"btn_search"] forState:UIControlStateNormal];
-    [rightBtn addTarget:self action:@selector(searchActivityAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-    self.navigationItem.rightBarButtonItem = rightBarBtn;
+    [self searchBtn];
+//    //right
+//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rightBtn.frame = CGRectMake(0, 0, 20, 20);
+//    [rightBtn setImage:[UIImage imageNamed:@"btn_search"] forState:UIControlStateNormal];
+//    [rightBtn addTarget:self action:@selector(searchActivityAction:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+//    self.navigationItem.rightBarButtonItem = rightBarBtn;
     
     //注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
@@ -150,12 +151,6 @@
 -(void)selectCityAction:(UIBarButtonItem *)btn{
     SelectCityViewController *selectCity = [[SelectCityViewController alloc] init];
     [self presentViewController:selectCity animated:YES completion:nil];
-    
-}
-//搜索页面
-- (void)searchActivityAction:(UIButton *)btn{
-    SearchViewController *searchVC = [[SearchViewController alloc] init];
-    [self presentViewController:searchVC animated:YES completion:nil];
     
 }
 //自定义tableView头部
@@ -355,6 +350,7 @@
 //热门专题
 - (void)hotActivityButtonAction{
     HotViewController *hotVC = [[HotViewController alloc] init];
+    self.tabBarController.tabBar.hidden = YES;
     [self.navigationController pushViewController:hotVC animated:YES];
 }
 

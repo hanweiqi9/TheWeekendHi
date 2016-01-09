@@ -12,6 +12,8 @@
 
 -(void)showBackBtn;
 
+-(void)searchBtn;
 
+-(void)rightBtn;
 
 @end

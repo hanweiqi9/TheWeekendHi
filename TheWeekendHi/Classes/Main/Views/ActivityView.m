@@ -152,8 +152,8 @@
     htLabel.font = [UIFont systemFontOfSize:15.0];
     [self.mainScrollView addSubview:htLabel];
     
-    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(10, _lastLabelBottom-28, 20, 25)];
-    image.image = [UIImage imageNamed:@"list_like_heart"];
+    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(10, _lastLabelBottom-27, 20, 20)];
+    image.image = [UIImage imageNamed:@"ac_details_recommed_img"];
     [self.mainScrollView addSubview:image];
     
      self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom +_hintLabelHeight+30);

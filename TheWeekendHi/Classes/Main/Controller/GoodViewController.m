@@ -11,6 +11,7 @@
 #import "GoodTableViewCell.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "GoodModel.h"
+#import "ActivityViewController.h"
 
 @interface GoodViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate>
 
@@ -30,7 +31,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //right
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(0, 0, 20, 20);
+    [rightBtn setImage:[UIImage imageNamed:@"btn_search"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(searchActivityAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightBarBtn;
+    
     [self showBackBtn];
+    self.navigationItem.title = @"精选活动";
     
     [self loadData];
     
@@ -70,8 +80,15 @@
 
 #pragma mark----------------UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    GoodModel *model = self.listArray[indexPath.row];
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-   
+    ActivityViewController *activityVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ActivityVC"];
+    //活动id
+    activityVC.activityId = model.activityId;
+    [self.navigationController pushViewController:activityVC animated:YES];
+
+    
 }
 
 #pragma mark----------PullingRefreshTableViewDelegate
@@ -158,6 +175,10 @@
     return _tableView;
 }
 
+#pragma mark-------------搜索方法
+-(void)searchActivityAction:(UIButton *)btn{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

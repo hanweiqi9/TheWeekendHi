@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GoodModel.h"
 
 @interface HotViewController : UIViewController
+@property(nonatomic,copy) GoodModel *model;
 
 @end
