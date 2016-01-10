@@ -52,6 +52,25 @@
 
 }
 
+- (void)searchRightBtn{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 20, 20);
+    [btn setImage:[UIImage imageNamed:@"btn_search"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(likeBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    UIButton *twoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    twoBtn.frame = CGRectMake(40, 0, 20, 20);
+    [twoBtn setImage:[UIImage imageNamed:@"btn_screening"] forState:UIControlStateNormal];
+    [twoBtn addTarget:self action:@selector(shareBtn) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightTwoBtn = [[UIBarButtonItem alloc] initWithCustomView:twoBtn];
+    NSArray *rightBtns = @[rightTwoBtn,rightBtn];
+    self.navigationItem.rightBarButtonItems = rightBtns;
+    
+
+}
+
 - (void)backBtn{
     [self.navigationController popViewControllerAnimated:YES];
 }

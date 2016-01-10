@@ -21,6 +21,7 @@
 @property(nonatomic,assign) BOOL refreshing;
 @property(nonatomic,strong) PullingRefreshTableView *tableView;
 @property(nonatomic,strong) NSMutableArray *listArray;
+@property(nonatomic,strong) UISegmentedControl *segmentedControl;
 
 
 @end
@@ -30,6 +31,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"排序",@"筛选"]];
+    self.segmentedControl.frame = CGRectMake(0, 0, kScreenWidth, 44);
+    self.segmentedControl.momentary = YES;
+    [self.segmentedControl setEnabled:YES forSegmentAtIndex:1];
+    [self.segmentedControl addTarget:self action:@selector(segmentTapAction:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:self.segmentedControl];
+    
     
     //right
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -56,6 +65,10 @@
     
    }
 
+
+- (void)segmentTapAction:(UISegmentedControl *)segment{
+    
+}
 
 #pragma mark-----------------UITableViewDataSource
 
@@ -168,7 +181,7 @@
 #pragma mark-------------LazyLoading
 - (PullingRefreshTableView *)tableView{
     if (_tableView == nil) {
-        self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) pullingDelegate:self];
+        self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 44, kScreenWidth, kScreenHeight-64) pullingDelegate:self];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
     }

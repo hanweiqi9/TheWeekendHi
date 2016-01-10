@@ -338,6 +338,7 @@
 - (void)mainActivityButtonAction:(UIButton *)btn{
     
     ClassifyViewController *classVC = [[ClassifyViewController alloc] init];
+    self.tabBarController.tabBar.hidden = YES;
     [self.navigationController pushViewController:classVC animated:YES];
 }
 //精选活动

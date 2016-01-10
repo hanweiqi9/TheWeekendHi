@@ -26,7 +26,6 @@
 
 - (void)setModel:(HotModel *)model{
     
-//    self.activityImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth - 20, 130)];
     [self.activityImageView sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:nil];
     
 }

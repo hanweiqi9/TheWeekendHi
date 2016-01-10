@@ -28,5 +28,7 @@
 //热门专题
 #define kHotActivity @"http://e.kumi.cn/app/positionlist.php?_s_=e2b71c66789428d5385b06c178a88db2&_t_=1452237051&channelid=appstore&cityid=1&lat=34.61351314785497&limit=30&lng=112.4140755658942"
 
+//演出剧目
+#define  kShowProgram  @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=1e925924e35606ad84e25cc4f8181052&_t_=1452419774&channelid=appstore&cityid=1&lat=34.61352375700717&limit=30&lng=112.4140695882542&typeid=6"
 
 #endif /* Header_h */
