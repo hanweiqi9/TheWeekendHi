@@ -36,6 +36,8 @@
     NSLog(@"%@",model.title);
     
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
+    self.headImageView.layer.cornerRadius = 20;
+    self.headImageView.clipsToBounds = YES;
     self.titleLabel.text = model.title;
     self.priceLabel.text = model.price;
     self.ageLabel.text = model.age;

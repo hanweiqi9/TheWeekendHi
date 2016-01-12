@@ -16,7 +16,7 @@
     CGFloat _previousImageBottom;
     //
     CGFloat _lastLabelBottom;
-    CGFloat _hintLabelHeight;
+//    CGFloat _hintLabelHeight;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -136,37 +136,15 @@
 
                 }
             }
+           
         }
+        //保留最后一个label的高度，+ 30是下边tabbar的高度
+        _lastLabelBottom = label.bottom > _previousImageBottom ? label.bottom + 70 : _previousImageBottom + 70;
+
     }
     
-    UILabel *hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, _lastLabelBottom-_hintLabelHeight-30, kScreenWidth - 70, 30)];
-    hintLabel.text = @"温馨提示";
-    hintLabel.font = [UIFont systemFontOfSize:15.0];
-    [self.mainScrollView addSubview:hintLabel];
-    
-    _hintLabelHeight = [HWTools getTextHeightWithBigestSize:self.str BigestSize:CGSizeMake(kScreenWidth, 1000) textFont:15.0];
-    
-    UILabel *htLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, _lastLabelBottom, kScreenWidth - 20, _hintLabelHeight)];
-    htLabel.text = self.str;
-    htLabel.numberOfLines = 0;
-    htLabel.font = [UIFont systemFontOfSize:15.0];
-    [self.mainScrollView addSubview:htLabel];
-    
-    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(10, _lastLabelBottom-27, 20, 20)];
-    image.image = [UIImage imageNamed:@"ac_details_recommed_img"];
-    [self.mainScrollView addSubview:image];
-    
-    if (_lastLabelBottom > _previousImageBottom) {
-         self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom);
-    }else{
-         self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _previousImageBottom);
-    }
-    if (_lastLabelBottom > _previousImageBottom) {
-        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom);
-    }else{
-        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _previousImageBottom);
-    }
-    
+     self.mainScrollView.contentSize = CGSizeMake(kScreenWidth,_previousImageBottom + 30);
+
 }
 
 

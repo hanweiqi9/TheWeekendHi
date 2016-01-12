@@ -76,7 +76,7 @@
         label.numberOfLines = 0;
         label.font = [UIFont systemFontOfSize:15.0];
         [self.mainScrollView addSubview:label];
-        //保留最后一个label的高度，+ 64是下边tabbar的高度
+        //保留最后一个label的高度，+ 64是下边tabbar的高度就是scrollView
         _lastLabelBottom = label.bottom + 30;
     
         
@@ -117,20 +117,18 @@
                 }
             }
         }
-    }
-    if (_lastLabelBottom > _previousImageBottom) {
-        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom);
-    }else{
-        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _previousImageBottom);
+        //保留最后一个label的高度，+ 30是下边tabbar的高度
+        _lastLabelBottom = label.bottom > _previousImageBottom ? label.bottom + 70 : _previousImageBottom + 70;
     }
     
+    self.mainScrollView.contentSize = CGSizeMake(kScreenWidth,_previousImageBottom + 30);
 }
 
 
 - (UIScrollView *)mainScrollView{
     if (_mainScrollView == nil) {
         self.mainScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
-        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, 10000);
+        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, 5000);
         
     }
     return _mainScrollView;
