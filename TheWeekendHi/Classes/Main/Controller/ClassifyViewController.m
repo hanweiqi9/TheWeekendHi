@@ -148,7 +148,7 @@
     [sessionManager GET:[NSString stringWithFormat: @"%@&page=%ld&typeid=%@",kClassify,_pageCount,@(6)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [ProgressHUD show:@"加载完成"];
+        [ProgressHUD showSuccess:@"加载完成"];
         
         NSDictionary *dic = responseObject;
         NSString *status = dic[@"status"];
@@ -310,12 +310,7 @@
 #pragma mark--------------CustomMethod
 
 - (void)showPreviousSelectBtn{
-    if (self.refreshing) {//下拉显示原来数据
-        if (self.showDataArray.count > 0) {
-            [self.showDataArray removeAllObjects];
-        }
-
-    }
+    
         switch (self.classifyListType) {
         case ClassifyListTypeShowRepertoire:
         {
