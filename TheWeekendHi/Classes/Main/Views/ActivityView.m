@@ -156,7 +156,17 @@
     image.image = [UIImage imageNamed:@"ac_details_recommed_img"];
     [self.mainScrollView addSubview:image];
     
-     self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom +_hintLabelHeight+30);
+    if (_lastLabelBottom > _previousImageBottom) {
+         self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom);
+    }else{
+         self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _previousImageBottom);
+    }
+    if (_lastLabelBottom > _previousImageBottom) {
+        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom);
+    }else{
+        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _previousImageBottom);
+    }
+    
 }
 
 

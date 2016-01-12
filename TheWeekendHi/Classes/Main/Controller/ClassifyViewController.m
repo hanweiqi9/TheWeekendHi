@@ -2,6 +2,8 @@
 //  ClassifyViewController.m
 //  TheWeekendHi
 //
+
+//  分类列表
 //  Created by scjy on 16/1/6.
 //  Copyright © 2016年 芒果科技. All rights reserved.
 //
@@ -12,6 +14,8 @@
 #import "ActivityViewController.h"
 #import "GoodTableViewCell.h"
 #import "GoodModel.h"
+#import "VOSegmentedControl.h"
+#import "ProgressHUD.h"
 
 
 @interface ClassifyViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate>
@@ -20,10 +24,17 @@
     NSInteger _pageCount;
 }
 
-@property(nonatomic,strong) UISegmentedControl *segmentControl;
+@property(nonatomic,strong) VOSegmentedControl *segmentControl;
 @property(nonatomic,assign) BOOL refreshing;
 @property(nonatomic,strong) PullingRefreshTableView *tableView;
-@property(nonatomic,strong) NSMutableArray *listArray;
+//用来显示数据的数组
+@property(nonatomic,strong) NSMutableArray *showDataArray;
+@property(nonatomic,strong) NSMutableArray *showArray;
+@property(nonatomic,strong) NSMutableArray *touristArray;
+@property(nonatomic,strong) NSMutableArray *studyArray;
+@property(nonatomic,strong) NSMutableArray *familyArray;
+
+
 
 @end
 
@@ -34,47 +45,50 @@
     // Do any additional setup after loading the view.
     
     [self showBackBtn];
-    
-    
-    self.segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"演出剧目",@"景点场馆",@"学习益智",@"亲子旅游"]];
-    self.segmentControl.frame = CGRectMake(0, 0, kScreenWidth, 44);
-    [self.segmentControl addTarget:self action:@selector(segmentAction) forControlEvents:UIControlEventValueChanged];
+    self.title  = @"分类列表";
+    self.showDataArray = [NSMutableArray new];
+
     [self.view addSubview:self.segmentControl];
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"GoodTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    
     [self.view addSubview:self.tableView];
     
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"GoodTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     self.tableView.rowHeight = 90;
-    [self.tableView launchRefreshing];
     
+    
+    //第一次进入分类列表中，请求全部数据接口
+    //根据上一页选择按钮，显示第几页数据
+      [self showPreviousSelectBtn];
+    
+    [self.tableView launchRefreshing];
+    [self chooseRequest];
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [ProgressHUD dismiss];
 }
 
 #pragma mark-----------------UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"%lu",(unsigned long)self.listArray.count);
+     return self.showDataArray.count;
     
-    
-    //        [self loadData];
-    return self.listArray.count;
+   
 }
-
-
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GoodTableViewCell *goodCell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    GoodModel *model = self.listArray[indexPath.row];
+    GoodModel *model = self.showDataArray[indexPath.row];
     goodCell.model = model;
     return goodCell;
-}
+    
+   }
 
 #pragma mark----------------UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    GoodModel *model = self.listArray[indexPath.row];
+    GoodModel *model = self.showDataArray[indexPath.row];
     UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     ActivityViewController *activityVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ActivityVC"];
@@ -82,22 +96,25 @@
     activityVC.activityId = model.activityId;
     [self.navigationController pushViewController:activityVC animated:YES];
     
-    
+
 }
 
 #pragma mark----------PullingRefreshTableViewDelegate
-//tableView上拉开始刷新的时候调用
+//tableView下拉开始刷新的时候调用
 -(void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView{
+    
     self.refreshing = YES;
     _pageCount = 1;
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
-    
-}
-//下拉
+    [self performSelector:@selector(chooseRequest) withObject:nil afterDelay:1.0];
+   }
+//上拉
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView{
+    self.refreshing = NO;
     _pageCount+=1;
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
-}
+    
+    [self performSelector:@selector(chooseRequest) withObject:nil afterDelay:1.0];
+    
+    }
 
 
 
@@ -106,45 +123,6 @@
     return [HWTools getSystemNowDate];
 }
 
-#pragma mark --------------//加载数据
-- (void)loadData{
-    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
-    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld",kShowProgram,_pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        HWQLog(@"han = %@",downloadProgress);
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        //        HWQLog(@"%@",responseObject);
-        NSDictionary *dic = responseObject;
-        NSString *status = dic[@"status"];
-        NSInteger code = [dic[@"code"] integerValue];
-        self.listArray = [NSMutableArray new];
-        if ([status isEqualToString:@"success"] && code == 0) {
-            NSDictionary *dict = dic[@"success"];
-            NSArray *acArray = dict[@"acData"];
-            
-            for (NSDictionary *acDic in acArray) {
-                GoodModel *model = [[GoodModel alloc]initWithDictionary:acDic];
-                [self.listArray addObject:model];
-                NSLog(@"list = %@",self.listArray);
-            }
-            
-            //完成加载
-            
-            [self.tableView tableViewDidFinishedLoading];
-            self.tableView.reachedTheEnd = NO;
-            [self.tableView reloadData];
-            
-            
-            
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        HWQLog(@"%@",error);
-        
-    }];
-    
-}
 
 #pragma mark---------scrollViewDid
 
@@ -159,26 +137,281 @@
     
 }
 
+
+- (void)getShowRequest{
+    
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [ProgressHUD show:@"正在加载中..."];
+    //typeid=6时
+    [sessionManager GET:[NSString stringWithFormat: @"%@&page=%@&typeid=%@",kClassify,@(1),@(6)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD show:@"加载完成"];
+        
+        NSDictionary *dic = responseObject;
+        NSString *status = dic[@"status"];
+        NSInteger code = [dic[@"code"] integerValue];
+        
+        if ([status isEqualToString:@"success"] && code == 0) {
+            NSDictionary *dict = dic[@"success"];
+            NSArray *acArray = dict[@"acData"];
+            for (NSDictionary *acDic in acArray) {
+                GoodModel *model = [[GoodModel alloc]initWithDictionary:acDic];
+                [self.showArray addObject:model];
+                NSLog(@"show = %@",self.showArray);
+            }
+            [self.tableView reloadData];
+            //完成加载
+            [self.tableView tableViewDidFinishedLoading];
+            self.tableView.reachedTheEnd = NO;
+            
+        }
+
+        [self showPreviousSelectBtn];
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+    }];
+   }
+-(void)getTouristRequest{
+     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+
+    //typeid=23景点场所
+    [ProgressHUD show:@"正在加载中..."];
+    [sessionManager GET:[NSString stringWithFormat: @"%@&page=%@&typeid=%@",kClassify,@(1),@(23)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [ProgressHUD show:@"加载完成"];
+        NSDictionary *dic = responseObject;
+        NSString *status = dic[@"status"];
+        NSInteger code = [dic[@"code"] integerValue];
+        
+        if ([status isEqualToString:@"success"] && code == 0) {
+            NSDictionary *dict = dic[@"success"];
+            NSArray *acArray = dict[@"acData"];
+            for (NSDictionary *acDic in acArray) {
+                GoodModel *model = [[GoodModel alloc]initWithDictionary:acDic];
+                [self.touristArray addObject:model];
+            }
+            [self.tableView reloadData];
+            //完成加载
+            [self.tableView tableViewDidFinishedLoading];
+            self.tableView.reachedTheEnd = NO;
+          
+        }
+        [self showPreviousSelectBtn];
+
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+
+    }];
+}
+-(void)getStudyRequest{
+     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+
+    //typeid=22学习益智
+    [ProgressHUD show:@"正在加载中..."];
+    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%@&typeid=%@",kClassify,@(1),@(22)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [ProgressHUD show:@"加载完成"];
+        NSDictionary *dic = responseObject;
+        NSString *status = dic[@"status"];
+        NSInteger code = [dic[@"code"] integerValue];
+        
+        if ([status isEqualToString:@"success"] && code == 0) {
+            NSDictionary *dict = dic[@"success"];
+            NSArray *acArray = dict[@"acData"];
+            for (NSDictionary *acDic in acArray) {
+                GoodModel *model = [[GoodModel alloc]initWithDictionary:acDic];
+                [self.studyArray addObject:model];
+                
+            }
+            [self.tableView reloadData];
+            //完成加载
+            [self.tableView tableViewDidFinishedLoading];
+            self.tableView.reachedTheEnd = NO;
+        }
+        [self showPreviousSelectBtn];
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+
+    }];
+    
+
+}
+-(void)getFamilyRequest{
+       //typeid=21亲子旅游
+     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+
+    [ProgressHUD show:@"正在加载中..."];
+    [sessionManager GET:[NSString stringWithFormat: @"%@&page=%@&typeid=%@",kClassify,@(1),@(21)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         [ProgressHUD show:@"加载完成"];
+        NSDictionary *dic = responseObject;
+        NSString *status = dic[@"status"];
+        NSInteger code = [dic[@"code"] integerValue];
+        
+        if ([status isEqualToString:@"success"] && code == 0) {
+            NSDictionary *dict = dic[@"success"];
+            NSArray *acArray = dict[@"acData"];
+            for (NSDictionary *acDic in acArray) {
+                GoodModel *model = [[GoodModel alloc]initWithDictionary:acDic];
+                [self.familyArray addObject:model];
+            }
+            [self.tableView reloadData];
+            //完成加载
+            [self.tableView tableViewDidFinishedLoading];
+            self.tableView.reachedTheEnd = NO;
+
+        }
+        [self showPreviousSelectBtn];
+
+     
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+
+    }];
+
+}
+
+#pragma mark--------------CustomMethod
+
+- (void)showPreviousSelectBtn{
+//    if (self.showDataArray.count > 0) {
+//        [self.showDataArray removeAllObjects];
+//    }
+    switch (self.classifyListType) {
+        case ClassifyListTypeShowRepertoire:
+        {
+            self.showDataArray = self.showArray;
+        }
+            break;
+        case ClassifyListTypeTouristPlace:
+        {
+            self.showDataArray = self.touristArray;
+        }
+            break;
+        case ClassifyListTypeStudyPUZ:
+        {
+            self.showDataArray = self.studyArray;
+        }
+            break;
+        case ClassifyListTypeFamilyTravel:
+        {
+            self.showDataArray = self.familyArray;
+        }
+            break;
+        default:
+            break;
+    }
+    [self.tableView reloadData];
+}
+
 #pragma mark-------------LazyLoading
 - (PullingRefreshTableView *)tableView{
     if (_tableView == nil) {
-        self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 44, kScreenWidth, kScreenHeight-64) pullingDelegate:self];
+        self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 44, kScreenWidth, kScreenHeight-64 - 40) pullingDelegate:self];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.rowHeight = 90;
     }
     return _tableView;
 }
 
+- (NSMutableArray *)showDataArray{
+    if (_showDataArray == nil) {
+        self.showDataArray = [NSMutableArray new];
+    }
+    return _showDataArray;
+}
 
+- (NSMutableArray *)showArray{
+    if (_showArray == nil) {
+        self.showArray = [NSMutableArray new];
+    }
+    return _showArray;
+}
 
+-(NSMutableArray *)touristArray{
+    if (_touristArray == nil) {
+        self.touristArray = [NSMutableArray new];
+    }
+    return _touristArray;
+}
 
+- (NSMutableArray *)studyArray{
+    if (_studyArray == nil) {
+        self.studyArray = [NSMutableArray new];
+    }
+    return _studyArray;
+}
 
+- (NSMutableArray *)familyArray{
+    if (_familyArray == nil) {
+        self.familyArray = [NSMutableArray new];
+    }
+    return _familyArray;
+}
 
+#pragma mark   -------------    VOSegmentedControl
+- (VOSegmentedControl *)segmentControl{
+    if (_segmentControl == nil) {
+        self.segmentControl = [[VOSegmentedControl alloc]initWithSegments:@[@{VOSegmentText:@"演出剧目"},@{VOSegmentText:@"景点场馆"},@{VOSegmentText:@"学习益智"},@{VOSegmentText:@"亲子旅游"}]];
+        self.segmentControl.contentStyle = VOContentStyleTextAlone;
+        self.segmentControl.indicatorStyle = VOSegCtrlIndicatorStyleBottomLine;
+        self.segmentControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        self.segmentControl.selectedBackgroundColor = self.segmentControl.backgroundColor;
+        self.segmentControl.allowNoSelection = NO;
+        self.segmentControl.frame = CGRectMake(0, 0, kScreenWidth, 40);
+        self.segmentControl.indicatorThickness = 4;
+        self.segmentControl.selectedSegmentIndex = self.classifyListType-1;
 
+        //返回点击的那个按钮
+        //返回点击的是哪个按钮
+        
+        [self.segmentControl setIndexChangeBlock:^(NSInteger index) {
+            NSLog(@"1: block --> %@", @(index));
+        }];
+        [self.segmentControl addTarget:self action:@selector(segmentCtrlValuechange:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _segmentControl;
+}
 
-- (void)segmentAction{
+- (void)segmentCtrlValuechange:(VOSegmentedControl *)segmentControl{
+    
+//    [self showPreviousSelectBtn];
+    self.classifyListType = segmentControl.selectedSegmentIndex;
+    [self chooseRequest];
     
 }
+
+- (void)chooseRequest{
+    switch (self.classifyListType) {
+        case ClassifyListTypeShowRepertoire:
+            [self getShowRequest];
+            break;
+        case ClassifyListTypeTouristPlace:
+            [self getTouristRequest];
+            break;
+        case ClassifyListTypeStudyPUZ:
+            [self getStudyRequest];
+            break;
+        case ClassifyListTypeFamilyTravel:
+            [self getFamilyRequest];
+            break;
+        default:
+            break;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

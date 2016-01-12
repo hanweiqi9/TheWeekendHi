@@ -15,6 +15,8 @@
 		7A12FAFC1C3FA3C200E47072 /* GoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAFA1C3FA3C200E47072 /* GoodTableViewCell.xib */; };
 		7A12FAFE1C3FB76C00E47072 /* good.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAFD1C3FB76C00E47072 /* good.plist */; };
 		7A12FB011C3FBE4600E47072 /* GoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12FB001C3FBE4600E47072 /* GoodModel.m */; };
+		7A18BF2D1C449F6A001DAEF9 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A18BF2A1C449F6A001DAEF9 /* ProgressHUD.bundle */; };
+		7A18BF2E1C449F6A001DAEF9 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A18BF2C1C449F6A001DAEF9 /* ProgressHUD.m */; };
 		7A372F6B1C3B7FA000892207 /* main.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A372F6A1C3B7FA000892207 /* main.plist */; };
 		7A372F6E1C3BA07300892207 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A372F6D1C3BA07300892207 /* MainModel.m */; };
 		7A3883A91C3E10DB006584F9 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3883A81C3E10DB006584F9 /* ActivityView.m */; };
@@ -35,6 +37,14 @@
 		7A623EFB1C40F3DE003B4FCE /* HotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A623EFA1C40F3DE003B4FCE /* HotModel.m */; };
 		7A6D73031C3F5D5A00B6F89E /* theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A6D73021C3F5D5A00B6F89E /* theme.plist */; };
 		7A6D73061C3F5ECD00B6F89E /* ThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D73051C3F5ECD00B6F89E /* ThemeView.m */; };
+		7A6DDADD1C4392B100C9B5C4 /* VOContentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DDAD61C4392B100C9B5C4 /* VOContentLayer.m */; };
+		7A6DDADE1C4392B100C9B5C4 /* VOIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DDAD81C4392B100C9B5C4 /* VOIndicatorAnimation.m */; };
+		7A6DDADF1C4392B100C9B5C4 /* VOSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DDADA1C4392B100C9B5C4 /* VOSegment.m */; };
+		7A6DDAE01C4392B100C9B5C4 /* VOSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DDADC1C4392B100C9B5C4 /* VOSegmentedControl.m */; };
+		7A6DDAE21C43A7DF00C9B5C4 /* typeid6.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A6DDAE11C43A7DF00C9B5C4 /* typeid6.plist */; };
+		7A6DDAE41C43A7E600C9B5C4 /* typeid23.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A6DDAE31C43A7E600C9B5C4 /* typeid23.plist */; };
+		7A6DDAE61C43A7ED00C9B5C4 /* typeid22.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A6DDAE51C43A7ED00C9B5C4 /* typeid22.plist */; };
+		7A6DDAE81C43A7F400C9B5C4 /* typeud21.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A6DDAE71C43A7F400C9B5C4 /* typeud21.plist */; };
 		7A9D914A1C3A1C3900B72CF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D91491C3A1C3900B72CF9 /* main.m */; };
 		7A9D914F1C3A1C3900B72CF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D914E1C3A1C3900B72CF9 /* Assets.xcassets */; };
 		7A9D91521C3A1C3900B72CF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D91501C3A1C3900B72CF9 /* LaunchScreen.storyboard */; };
@@ -80,6 +90,9 @@
 		7A12FAFD1C3FB76C00E47072 /* good.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = good.plist; sourceTree = "<group>"; };
 		7A12FAFF1C3FBE4600E47072 /* GoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodModel.h; sourceTree = "<group>"; };
 		7A12FB001C3FBE4600E47072 /* GoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodModel.m; sourceTree = "<group>"; };
+		7A18BF2A1C449F6A001DAEF9 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		7A18BF2B1C449F6A001DAEF9 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		7A18BF2C1C449F6A001DAEF9 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		7A372F6A1C3B7FA000892207 /* main.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = main.plist; path = ../Controller/main.plist; sourceTree = "<group>"; };
 		7A372F6C1C3BA07300892207 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		7A372F6D1C3BA07300892207 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
@@ -117,6 +130,18 @@
 		7A6D73021C3F5D5A00B6F89E /* theme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = theme.plist; path = ../Controller/theme.plist; sourceTree = "<group>"; };
 		7A6D73041C3F5ECD00B6F89E /* ThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeView.h; sourceTree = "<group>"; };
 		7A6D73051C3F5ECD00B6F89E /* ThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeView.m; sourceTree = "<group>"; };
+		7A6DDAD51C4392B100C9B5C4 /* VOContentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOContentLayer.h; sourceTree = "<group>"; };
+		7A6DDAD61C4392B100C9B5C4 /* VOContentLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOContentLayer.m; sourceTree = "<group>"; };
+		7A6DDAD71C4392B100C9B5C4 /* VOIndicatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOIndicatorAnimation.h; sourceTree = "<group>"; };
+		7A6DDAD81C4392B100C9B5C4 /* VOIndicatorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOIndicatorAnimation.m; sourceTree = "<group>"; };
+		7A6DDAD91C4392B100C9B5C4 /* VOSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOSegment.h; sourceTree = "<group>"; };
+		7A6DDADA1C4392B100C9B5C4 /* VOSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOSegment.m; sourceTree = "<group>"; };
+		7A6DDADB1C4392B100C9B5C4 /* VOSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOSegmentedControl.h; sourceTree = "<group>"; };
+		7A6DDADC1C4392B100C9B5C4 /* VOSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOSegmentedControl.m; sourceTree = "<group>"; };
+		7A6DDAE11C43A7DF00C9B5C4 /* typeid6.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = typeid6.plist; sourceTree = "<group>"; };
+		7A6DDAE31C43A7E600C9B5C4 /* typeid23.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = typeid23.plist; sourceTree = "<group>"; };
+		7A6DDAE51C43A7ED00C9B5C4 /* typeid22.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = typeid22.plist; sourceTree = "<group>"; };
+		7A6DDAE71C43A7F400C9B5C4 /* typeud21.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = typeud21.plist; sourceTree = "<group>"; };
 		7A9D91451C3A1C3900B72CF9 /* TheWeekendHi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheWeekendHi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9D91491C3A1C3900B72CF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A9D914B1C3A1C3900B72CF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -183,6 +208,16 @@
 			path = PullingRefreshTableView;
 			sourceTree = "<group>";
 		};
+		7A18BF291C449F6A001DAEF9 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				7A18BF2A1C449F6A001DAEF9 /* ProgressHUD.bundle */,
+				7A18BF2B1C449F6A001DAEF9 /* ProgressHUD.h */,
+				7A18BF2C1C449F6A001DAEF9 /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
 		7A5867171C3CAE6400090519 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +231,21 @@
 				7A3883AB1C3E4C34006584F9 /* HWTools.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		7A6DDAD41C4392B100C9B5C4 /* VOSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				7A6DDAD51C4392B100C9B5C4 /* VOContentLayer.h */,
+				7A6DDAD61C4392B100C9B5C4 /* VOContentLayer.m */,
+				7A6DDAD71C4392B100C9B5C4 /* VOIndicatorAnimation.h */,
+				7A6DDAD81C4392B100C9B5C4 /* VOIndicatorAnimation.m */,
+				7A6DDAD91C4392B100C9B5C4 /* VOSegment.h */,
+				7A6DDADA1C4392B100C9B5C4 /* VOSegment.m */,
+				7A6DDADB1C4392B100C9B5C4 /* VOSegmentedControl.h */,
+				7A6DDADC1C4392B100C9B5C4 /* VOSegmentedControl.m */,
+			);
+			path = VOSegmentedControl;
 			sourceTree = "<group>";
 		};
 		7A9D913C1C3A1C3900B72CF9 = {
@@ -340,6 +390,10 @@
 		7A9D91B11C3A4F4100B72CF9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7A6DDAE31C43A7E600C9B5C4 /* typeid23.plist */,
+				7A6DDAE71C43A7F400C9B5C4 /* typeud21.plist */,
+				7A6DDAE51C43A7ED00C9B5C4 /* typeid22.plist */,
+				7A6DDAE11C43A7DF00C9B5C4 /* typeid6.plist */,
 				7A6D73021C3F5D5A00B6F89E /* theme.plist */,
 				7A372F6A1C3B7FA000892207 /* main.plist */,
 				7A372F6C1C3BA07300892207 /* MainModel.h */,
@@ -413,6 +467,8 @@
 		7A9D91BC1C3A4FC100B72CF9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7A18BF291C449F6A001DAEF9 /* ProgressHUD */,
+				7A6DDAD41C4392B100C9B5C4 /* VOSegmentedControl */,
 				7A12FAED1C3FA1BE00E47072 /* PullingRefreshTableView */,
 				7A5867171C3CAE6400090519 /* Tool */,
 			);
@@ -558,12 +614,17 @@
 				7A9D914F1C3A1C3900B72CF9 /* Assets.xcassets in Resources */,
 				7A12FAF31C3FA1BE00E47072 /* blueArrowDown.png in Resources */,
 				7A12FAFE1C3FB76C00E47072 /* good.plist in Resources */,
+				7A6DDAE41C43A7E600C9B5C4 /* typeid23.plist in Resources */,
+				7A18BF2D1C449F6A001DAEF9 /* ProgressHUD.bundle in Resources */,
 				7A6D73031C3F5D5A00B6F89E /* theme.plist in Resources */,
 				7A5867331C3D1B0300090519 /* avtivity.plist in Resources */,
 				7A9D91BF1C3A506F00B72CF9 /* Main.storyboard in Resources */,
 				7A12FAF21C3FA1BE00E47072 /* blueArrow.png in Resources */,
 				7A623EF81C40ED59003B4FCE /* hotModel.plist in Resources */,
+				7A6DDAE21C43A7DF00C9B5C4 /* typeid6.plist in Resources */,
 				7A9D91C11C3A508E00B72CF9 /* Mine.storyboard in Resources */,
+				7A6DDAE81C43A7F400C9B5C4 /* typeud21.plist in Resources */,
+				7A6DDAE61C43A7ED00C9B5C4 /* typeid22.plist in Resources */,
 				7A9D91521C3A1C3900B72CF9 /* LaunchScreen.storyboard in Resources */,
 				7A623EF61C40ECBF003B4FCE /* HotTableViewCell.xib in Resources */,
 			);
@@ -639,8 +700,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A3883AF1C3E5B14006584F9 /* UIView+Extension.m in Sources */,
+				7A6DDADE1C4392B100C9B5C4 /* VOIndicatorAnimation.m in Sources */,
 				7A623EFB1C40F3DE003B4FCE /* HotModel.m in Sources */,
+				7A6DDADD1C4392B100C9B5C4 /* VOContentLayer.m in Sources */,
 				7A3883AC1C3E4C34006584F9 /* HWTools.m in Sources */,
+				7A6DDADF1C4392B100C9B5C4 /* VOSegment.m in Sources */,
 				7A58672B1C3CBFE600090519 /* ClassifyViewController.m in Sources */,
 				7A12FAFB1C3FA3C200E47072 /* GoodTableViewCell.m in Sources */,
 				7A3883A91C3E10DB006584F9 /* ActivityView.m in Sources */,
@@ -648,6 +712,7 @@
 				7A9D919B1C3A4D2000B72CF9 /* AppDelegate.m in Sources */,
 				7A9D914A1C3A1C3900B72CF9 /* main.m in Sources */,
 				7A12FB011C3FBE4600E47072 /* GoodModel.m in Sources */,
+				7A6DDAE01C4392B100C9B5C4 /* VOSegmentedControl.m in Sources */,
 				7A9D91B91C3A4F4100B72CF9 /* FineViewController.m in Sources */,
 				7A5867221C3CBD9300090519 /* SearchViewController.m in Sources */,
 				7A9D91BA1C3A4F4100B72CF9 /* MainViewController.m in Sources */,
@@ -655,6 +720,7 @@
 				7A5867311C3CC0DF00090519 /* HotViewController.m in Sources */,
 				7A58671F1C3CBC4B00090519 /* SelectCityViewController.m in Sources */,
 				7A12FAF41C3FA1BE00E47072 /* PullingRefreshTableView.m in Sources */,
+				7A18BF2E1C449F6A001DAEF9 /* ProgressHUD.m in Sources */,
 				7A9D91BB1C3A4F4100B72CF9 /* MeViewController.m in Sources */,
 				7A623EF51C40ECBF003B4FCE /* HotTableViewCell.m in Sources */,
 				7A58672E1C3CC0D600090519 /* GoodViewController.m in Sources */,
@@ -796,7 +862,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/UI学习/第一个项目/TheWeekendHi/TheWeekendHi/Library/Tool/Main.pch";
 				INFOPLIST_FILE = TheWeekendHi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MangoInc.TheWeekendHi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -811,7 +877,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/UI学习/第一个项目/TheWeekendHi/TheWeekendHi/Library/Tool/Main.pch";
 				INFOPLIST_FILE = TheWeekendHi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MangoInc.TheWeekendHi;
 				PRODUCT_NAME = "$(TARGET_NAME)";

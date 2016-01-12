@@ -39,7 +39,7 @@
     self.titleLabel.text = model.title;
     self.priceLabel.text = model.price;
     self.ageLabel.text = model.age;
-//    self.likeLabel.text = model.counts;
+    self.likeLabel.text = [NSString stringWithFormat:@"%@",model.counts];
     
 }
 

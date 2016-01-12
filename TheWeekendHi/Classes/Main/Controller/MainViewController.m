@@ -48,14 +48,6 @@
     self.navigationItem.leftBarButtonItem = leftBarBtn;
     
     [self searchBtn];
-//    //right
-//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    rightBtn.frame = CGRectMake(0, 0, 20, 20);
-//    [rightBtn setImage:[UIImage imageNamed:@"btn_search"] forState:UIControlStateNormal];
-//    [rightBtn addTarget:self action:@selector(searchActivityAction:) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-//    self.navigationItem.rightBarButtonItem = rightBarBtn;
-    
     //注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
@@ -95,7 +87,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
      MainModel *model = self.listArray[indexPath.section][indexPath.row];
-    if (indexPath.section == 0) {
+        if (indexPath.section == 0) {
         UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         ActivityViewController *activityVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ActivityVC"];
@@ -107,6 +99,7 @@
         
         ThemeViewController *themeVC = [[ThemeViewController alloc] init];
         themeVC.themeid = model.activityId;
+//        NSLog(@"%@",themeVC.themeid);
         [self.navigationController pushViewController:themeVC animated:YES];
         
     }
@@ -336,10 +329,20 @@
 
 //分类列表界面
 - (void)mainActivityButtonAction:(UIButton *)btn{
-    
     ClassifyViewController *classVC = [[ClassifyViewController alloc] init];
+//    if (btn.tag == 100) {
+//        classVC.classifyListType = ClassifyListTypeShowRepertoire;
+//    }else if (btn.tag == 101){
+//        classVC.classifyListType = ClassifyListTypeTouristPlace;
+//    }else if (btn.tag == 102){
+//        classVC.classifyListType = ClassifyListTypeStudyPUZ;
+//    }else if (btn.tag == 103){
+//        classVC.classifyListType = ClassifyListTypeFamilyTravel;
+//    }
     self.tabBarController.tabBar.hidden = YES;
-    [self.navigationController pushViewController:classVC animated:YES];
+    NSInteger num = btn.tag-100+1;
+    classVC.classifyListType = num;
+        [self.navigationController pushViewController:classVC animated:YES];
 }
 //精选活动
 - (void)goodActivityButtonAction{

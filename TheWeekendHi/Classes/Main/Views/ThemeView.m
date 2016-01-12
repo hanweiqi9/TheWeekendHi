@@ -57,10 +57,10 @@
         //每一段活动信息
         CGFloat height = [HWTools getTextHeightWithBigestSize:dic[@"description"] BigestSize:CGSizeMake(kScreenWidth, 1000) textFont:15.0];
         CGFloat y;
-        if (_previousImageBottom > 186) { //如果图片底部的高度没有值（也就是小于500）,也就说明是加载第一个lable，那么y的值不应该减去500
-            y = 186 + _previousImageBottom - 186;
+        if (_previousImageBottom > 190) { //如果图片底部的高度没有值（也就是小于500）,也就说明是加载第一个lable，那么y的值不应该减去500
+            y = 190 + _previousImageBottom - 190;
         } else {
-            y = 186 + _previousImageBottom;
+            y = 190 + _previousImageBottom;
         }
         NSString *title = dic[@"title"];
         if (title != nil) {
@@ -118,8 +118,12 @@
             }
         }
     }
-    self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom + 300);
-
+    if (_lastLabelBottom > _previousImageBottom) {
+        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _lastLabelBottom);
+    }else{
+        self.mainScrollView.contentSize = CGSizeMake(kScreenWidth, _previousImageBottom);
+    }
+    
 }
 
 

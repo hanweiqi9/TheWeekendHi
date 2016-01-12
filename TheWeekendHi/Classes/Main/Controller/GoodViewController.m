@@ -37,6 +37,8 @@
     self.segmentedControl.momentary = YES;
     [self.segmentedControl setEnabled:YES forSegmentAtIndex:1];
     [self.segmentedControl addTarget:self action:@selector(segmentTapAction:) forControlEvents:UIControlEventValueChanged];
+    self.listArray = [NSMutableArray new];
+
     [self.view addSubview:self.segmentedControl];
     
     
@@ -105,16 +107,18 @@
 }
 
 #pragma mark----------PullingRefreshTableViewDelegate
-//tableView上拉开始刷新的时候调用
+//tableView下拉开始刷新的时候调用
 -(void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView{
     self.refreshing = YES;
     _pageCount = 1;
     [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
     
 }
-//下拉
+//上拉
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView{
+    self.refreshing = NO;
     _pageCount+=1;
+    
     [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
 }
 
@@ -137,15 +141,20 @@
         NSDictionary *dic = responseObject;
         NSString *status = dic[@"status"];
         NSInteger code = [dic[@"code"] integerValue];
-        self.listArray = [NSMutableArray new];
         if ([status isEqualToString:@"success"] && code == 0) {
             NSDictionary *dict = dic[@"success"];
             NSArray *acArray = dict[@"acData"];
-           
+            //下拉刷新的时候需要移除数组中元素
+            if (self.refreshing) {
+                if (self.listArray.count > 0) {
+                    [self.listArray removeAllObjects];
+                }
+            }
+
             for (NSDictionary *acDic in acArray) {
                 GoodModel *model = [[GoodModel alloc]initWithDictionary:acDic];
-               [self.listArray addObject:model];
-                NSLog(@"list = %@",self.listArray);
+                [self.listArray addObject:model];
+//                NSLog(@"list = %@",self.listArray);
             }
             
             //完成加载
@@ -153,8 +162,6 @@
             [self.tableView tableViewDidFinishedLoading];
             self.tableView.reachedTheEnd = NO;
             [self.tableView reloadData];
-            
-
             
         }
         

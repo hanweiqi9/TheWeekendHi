@@ -32,6 +32,8 @@
             
         }
         self.image_big = dict[@"image_big"];
+        self.title = dict[@"title"];
+        self.activityId = dict[@"id"];
         
     }
     return  self;

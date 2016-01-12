@@ -28,6 +28,7 @@
     // Do any additional setup after loading the view.
     
     [self showBackBtn];
+    self.listArray = [NSMutableArray new];
     self.navigationItem.title = @"热门专题";
     [self loadData];
     [self.tableView registerNib:[UINib nibWithNibName:@"HotTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
@@ -42,8 +43,6 @@
 #pragma mark-----------------UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    NSLog(@"%lu",(unsigned long)self.listArray.count);
-
     return self.listArray.count;
 }
 
@@ -69,20 +68,19 @@
 }
 
 #pragma mark----------PullingRefreshTableViewDelegate
-//tableView上拉开始刷新的时候调用
+//tableView下拉开始刷新的时候调用
 -(void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView{
     self.refreshing = YES;
     _pageCount = 1;
     [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
     
 }
-//下拉
+//上拉
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView{
+    self.refreshing = NO;
     _pageCount+=1;
     [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
 }
-
-
 
 //刷新完成时间
 - (NSDate *)pullingTableViewRefreshingFinishedDate{
@@ -93,7 +91,7 @@
 - (void)loadData{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%d",kHotActivity,1] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld",kHotActivity,_pageCount] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         HWQLog(@"han = %@",downloadProgress);
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -101,24 +99,25 @@
         NSDictionary *dic = responseObject;
         NSString *status = dic[@"status"];
         NSInteger code = [dic[@"code"] integerValue];
-        self.listArray = [NSMutableArray new];
         if ([status isEqualToString:@"success"] && code == 0) {
             NSDictionary *dict = dic[@"success"];
             NSArray *rcArray = dict[@"rcData"];
-            
+            if (self.refreshing) {
+                if (self.listArray.count > 0) {
+                    [self.listArray removeAllObjects];
+                }
+                
+            }
             for (NSDictionary *rcDic in rcArray) {
                 HotModel *model = [[HotModel alloc]initWithDictionary:rcDic];
                 [self.listArray addObject:model];
 //                NSLog(@"list = %@",self.listArray);
             }
-        
 //            完成加载
             
             [self.tableView tableViewDidFinishedLoading];
             self.tableView.reachedTheEnd = NO;
             [self.tableView reloadData];
-            
-            
             
         }
         
@@ -148,7 +147,7 @@
         self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) pullingDelegate:self];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        self.tableView.rowHeight = 140;
+        self.tableView.rowHeight = 160;
     }
     return _tableView;
 }

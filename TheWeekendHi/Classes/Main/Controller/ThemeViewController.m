@@ -8,6 +8,7 @@
 
 #import "ThemeViewController.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
+
 #import "ThemeView.h"
 
 
@@ -24,8 +25,7 @@
     [super loadView];
     self.themeView = [[ThemeView alloc]initWithFrame:self.view.frame];
     self.view = self.themeView;
-    [self getModel];
-
+   
 }
 
 - (void)viewDidLoad {
@@ -33,6 +33,8 @@
     // Do any additional setup after loading the view.
     
     [self showBackBtn];
+    [self getModel];
+
     
 }
 
@@ -42,9 +44,14 @@
     
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",KactivityThem,self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    
+    
+    [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",kActivityTheme,self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"%@",downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"%@",responseObject);
+        
+      
         
         NSDictionary *dic = responseObject;
         NSString *status = dic[@"status"];
@@ -57,9 +64,6 @@
         }else{
             
         }
-        
-        
-        
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
