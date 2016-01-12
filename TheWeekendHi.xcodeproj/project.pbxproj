@@ -17,6 +17,11 @@
 		7A12FB011C3FBE4600E47072 /* GoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12FB001C3FBE4600E47072 /* GoodModel.m */; };
 		7A18BF2D1C449F6A001DAEF9 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A18BF2A1C449F6A001DAEF9 /* ProgressHUD.bundle */; };
 		7A18BF2E1C449F6A001DAEF9 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A18BF2C1C449F6A001DAEF9 /* ProgressHUD.m */; };
+		7A18BF781C44F31B001DAEF9 /* dis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A18BF771C44F31B001DAEF9 /* dis.storyboard */; };
+		7A18BF7C1C44FA6B001DAEF9 /* DiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A18BF7A1C44FA6B001DAEF9 /* DiscoverTableViewCell.m */; };
+		7A18BF7D1C44FA6B001DAEF9 /* DiscoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A18BF7B1C44FA6B001DAEF9 /* DiscoverTableViewCell.xib */; };
+		7A18BFB01C450F4B001DAEF9 /* discover.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A18BFAF1C450F4B001DAEF9 /* discover.plist */; };
+		7A18BFB61C451292001DAEF9 /* DiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A18BFB51C451292001DAEF9 /* DiscoverModel.m */; };
 		7A372F6B1C3B7FA000892207 /* main.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A372F6A1C3B7FA000892207 /* main.plist */; };
 		7A372F6E1C3BA07300892207 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A372F6D1C3BA07300892207 /* MainModel.m */; };
 		7A3883A91C3E10DB006584F9 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3883A81C3E10DB006584F9 /* ActivityView.m */; };
@@ -56,7 +61,6 @@
 		7A9D91BB1C3A4F4100B72CF9 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D91B61C3A4F4100B72CF9 /* MeViewController.m */; };
 		7A9D91BF1C3A506F00B72CF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D91BE1C3A506F00B72CF9 /* Main.storyboard */; };
 		7A9D91C11C3A508E00B72CF9 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D91C01C3A508E00B72CF9 /* Mine.storyboard */; };
-		7A9D91C31C3A50CE00B72CF9 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D91C21C3A50CE00B72CF9 /* Discover.storyboard */; };
 		7A9D91C71C3A766D00B72CF9 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D91C51C3A766D00B72CF9 /* MainTableViewCell.m */; };
 		7A9D91C81C3A766D00B72CF9 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D91C61C3A766D00B72CF9 /* MainTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -93,6 +97,13 @@
 		7A18BF2A1C449F6A001DAEF9 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		7A18BF2B1C449F6A001DAEF9 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		7A18BF2C1C449F6A001DAEF9 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		7A18BF771C44F31B001DAEF9 /* dis.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = dis.storyboard; sourceTree = "<group>"; };
+		7A18BF791C44FA6B001DAEF9 /* DiscoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewCell.h; sourceTree = "<group>"; };
+		7A18BF7A1C44FA6B001DAEF9 /* DiscoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewCell.m; sourceTree = "<group>"; };
+		7A18BF7B1C44FA6B001DAEF9 /* DiscoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewCell.xib; sourceTree = "<group>"; };
+		7A18BFAF1C450F4B001DAEF9 /* discover.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = discover.plist; sourceTree = "<group>"; };
+		7A18BFB41C451292001DAEF9 /* DiscoverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverModel.h; sourceTree = "<group>"; };
+		7A18BFB51C451292001DAEF9 /* DiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverModel.m; sourceTree = "<group>"; };
 		7A372F6A1C3B7FA000892207 /* main.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = main.plist; path = ../Controller/main.plist; sourceTree = "<group>"; };
 		7A372F6C1C3BA07300892207 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		7A372F6D1C3BA07300892207 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
@@ -163,7 +174,6 @@
 		7A9D91B61C3A4F4100B72CF9 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		7A9D91BE1C3A506F00B72CF9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7A9D91C01C3A508E00B72CF9 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
-		7A9D91C21C3A50CE00B72CF9 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		7A9D91C41C3A766C00B72CF9 /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
 		7A9D91C51C3A766D00B72CF9 /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
 		7A9D91C61C3A766D00B72CF9 /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
@@ -342,6 +352,9 @@
 		7A9D91AB1C3A4F4100B72CF9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7A18BFAF1C450F4B001DAEF9 /* discover.plist */,
+				7A18BFB41C451292001DAEF9 /* DiscoverModel.h */,
+				7A18BFB51C451292001DAEF9 /* DiscoverModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,7 +362,10 @@
 		7A9D91AC1C3A4F4100B72CF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7A9D91C21C3A50CE00B72CF9 /* Discover.storyboard */,
+				7A18BF771C44F31B001DAEF9 /* dis.storyboard */,
+				7A18BF791C44FA6B001DAEF9 /* DiscoverTableViewCell.h */,
+				7A18BF7A1C44FA6B001DAEF9 /* DiscoverTableViewCell.m */,
+				7A18BF7B1C44FA6B001DAEF9 /* DiscoverTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -478,8 +494,8 @@
 		7A9D91BD1C3A4FC100B72CF9 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				7A9D919A1C3A4D2000B72CF9 /* AppDelegate.m */,
 				7A9D914B1C3A1C3900B72CF9 /* AppDelegate.h */,
+				7A9D919A1C3A4D2000B72CF9 /* AppDelegate.m */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -609,16 +625,18 @@
 			files = (
 				7A9D91C81C3A766D00B72CF9 /* MainTableViewCell.xib in Resources */,
 				7A372F6B1C3B7FA000892207 /* main.plist in Resources */,
+				7A18BF7D1C44FA6B001DAEF9 /* DiscoverTableViewCell.xib in Resources */,
 				7A12FAFC1C3FA3C200E47072 /* GoodTableViewCell.xib in Resources */,
-				7A9D91C31C3A50CE00B72CF9 /* Discover.storyboard in Resources */,
 				7A9D914F1C3A1C3900B72CF9 /* Assets.xcassets in Resources */,
 				7A12FAF31C3FA1BE00E47072 /* blueArrowDown.png in Resources */,
 				7A12FAFE1C3FB76C00E47072 /* good.plist in Resources */,
+				7A18BF781C44F31B001DAEF9 /* dis.storyboard in Resources */,
 				7A6DDAE41C43A7E600C9B5C4 /* typeid23.plist in Resources */,
 				7A18BF2D1C449F6A001DAEF9 /* ProgressHUD.bundle in Resources */,
 				7A6D73031C3F5D5A00B6F89E /* theme.plist in Resources */,
 				7A5867331C3D1B0300090519 /* avtivity.plist in Resources */,
 				7A9D91BF1C3A506F00B72CF9 /* Main.storyboard in Resources */,
+				7A18BFB01C450F4B001DAEF9 /* discover.plist in Resources */,
 				7A12FAF21C3FA1BE00E47072 /* blueArrow.png in Resources */,
 				7A623EF81C40ED59003B4FCE /* hotModel.plist in Resources */,
 				7A6DDAE21C43A7DF00C9B5C4 /* typeid6.plist in Resources */,
@@ -705,6 +723,7 @@
 				7A6DDADD1C4392B100C9B5C4 /* VOContentLayer.m in Sources */,
 				7A3883AC1C3E4C34006584F9 /* HWTools.m in Sources */,
 				7A6DDADF1C4392B100C9B5C4 /* VOSegment.m in Sources */,
+				7A18BF7C1C44FA6B001DAEF9 /* DiscoverTableViewCell.m in Sources */,
 				7A58672B1C3CBFE600090519 /* ClassifyViewController.m in Sources */,
 				7A12FAFB1C3FA3C200E47072 /* GoodTableViewCell.m in Sources */,
 				7A3883A91C3E10DB006584F9 /* ActivityView.m in Sources */,
@@ -712,6 +731,7 @@
 				7A9D919B1C3A4D2000B72CF9 /* AppDelegate.m in Sources */,
 				7A9D914A1C3A1C3900B72CF9 /* main.m in Sources */,
 				7A12FB011C3FBE4600E47072 /* GoodModel.m in Sources */,
+				7A18BFB61C451292001DAEF9 /* DiscoverModel.m in Sources */,
 				7A6DDAE01C4392B100C9B5C4 /* VOSegmentedControl.m in Sources */,
 				7A9D91B91C3A4F4100B72CF9 /* FineViewController.m in Sources */,
 				7A5867221C3CBD9300090519 /* SearchViewController.m in Sources */,

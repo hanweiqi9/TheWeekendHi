@@ -310,7 +310,12 @@
 #pragma mark--------------CustomMethod
 
 - (void)showPreviousSelectBtn{
-    
+    if (self.refreshing) {//下拉显示原来数据
+        if (self.showDataArray.count > 0) {
+            [self.showDataArray removeAllObjects];
+        }
+
+    }
         switch (self.classifyListType) {
         case ClassifyListTypeShowRepertoire:
         {

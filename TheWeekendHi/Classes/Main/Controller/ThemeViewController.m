@@ -34,6 +34,7 @@
     
     [self showBackBtn];
     [self getModel];
+    self.tabBarController.tabBar.hidden = YES;
 
     
 }

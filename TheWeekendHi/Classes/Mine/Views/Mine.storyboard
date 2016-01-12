@@ -8,7 +8,7 @@
         <!--我的-->
         <scene sceneID="luv-wa-Pwa">
             <objects>
-                <viewController id="S4o-R7-233" sceneMemberID="viewController">
+                <viewController id="S4o-R7-233" customClass="MeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r4n-yp-EvG"/>
                         <viewControllerLayoutGuide type="bottom" id="9FO-AK-tea"/>

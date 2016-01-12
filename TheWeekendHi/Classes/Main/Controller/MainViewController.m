@@ -55,7 +55,7 @@
     
     
     //请求网络数据
-//    [self requestModel];
+    [self requestModel];
     
     //启动定时器
     [self startTimer];
@@ -330,15 +330,6 @@
 //分类列表界面
 - (void)mainActivityButtonAction:(UIButton *)btn{
     ClassifyViewController *classVC = [[ClassifyViewController alloc] init];
-//    if (btn.tag == 100) {
-//        classVC.classifyListType = ClassifyListTypeShowRepertoire;
-//    }else if (btn.tag == 101){
-//        classVC.classifyListType = ClassifyListTypeTouristPlace;
-//    }else if (btn.tag == 102){
-//        classVC.classifyListType = ClassifyListTypeStudyPUZ;
-//    }else if (btn.tag == 103){
-//        classVC.classifyListType = ClassifyListTypeFamilyTravel;
-//    }
     self.tabBarController.tabBar.hidden = YES;
     NSInteger num = btn.tag-100+1;
     classVC.classifyListType = num;

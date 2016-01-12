@@ -38,16 +38,9 @@ typedef NS_ENUM(NSInteger,ClassifyListType) {
 //热门专题
 #define kHotActivity @"http://e.kumi.cn/app/positionlist.php?_s_=e2b71c66789428d5385b06c178a88db2&_t_=1452237051&channelid=appstore&cityid=1&lat=34.61351314785497&limit=30&lng=112.4140755658942"
 
-////演出剧目
-//#define  kShowProgram  @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=1e925924e35606ad84e25cc4f8181052&_t_=1452419774&channelid=appstore&cityid=1&lat=34.61352375700717&limit=30&lng=112.4140695882542&typeid=6"
-//
-//#define  kScenic      @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=07098ba9b3c880d9f0861206cf8d6208&_t_=1452420865&channelid=appstore&cityid=1&lat=34.61353403229416&limit=30&lng=112.4140383019175&page=1&typeid=23"
-////学习益智
-//#define  kStudy   @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=b6912dc77e7e12a24c48fc7bbef0c0b2&_t_=1452423875&channelid=appstore&cityid=1&lat=34.61355699177267&limit=30&lng=112.414074144134&typeid=22"
-////亲子旅游
-//#define  kTour  @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=64084c92a84b719e3d5c844c8bade788&_t_=1452424822&channelid=appstore&cityid=1&lat=34.6135238020622&limit=30&lng=112.4139990666016&typeid=21"
-//
 //分类列表
 #define kClassify @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=dad924a9b9cd534b53fc2c521e9f8e84&_t_=1452495193&channelid=appstore&cityid=1&lat=34.61356398594803&limit=30&lng=112.4140434532402"
+
+#define kDiscover @"http://e.kumi.cn/app/found.php?_s_=a82c7d49216aedb18c04a20fd9b0d5b2&_t_=1451310230&channelid=appstore&cityid=1&lat=34.62172291944134&lng=112.4149512442411"
 
 #endif /* Header_h */
