@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06B387C457BE1E7BA1202EC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA1708193465F7593E9096E /* libPods.a */; };
+		7A0F776C1C462C2B001A4245 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F776B1C462C2B001A4245 /* MessageUI.framework */; };
 		7A12FAF21C3FA1BE00E47072 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAEE1C3FA1BE00E47072 /* blueArrow.png */; };
 		7A12FAF31C3FA1BE00E47072 /* blueArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAEF1C3FA1BE00E47072 /* blueArrowDown.png */; };
 		7A12FAF41C3FA1BE00E47072 /* PullingRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12FAF11C3FA1BE00E47072 /* PullingRefreshTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -84,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		1BA1708193465F7593E9096E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A0F776B1C462C2B001A4245 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7A12FAEE1C3FA1BE00E47072 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
 		7A12FAEF1C3FA1BE00E47072 /* blueArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrowDown.png; sourceTree = "<group>"; };
 		7A12FAF01C3FA1BE00E47072 /* PullingRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullingRefreshTableView.h; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A0F776C1C462C2B001A4245 /* MessageUI.framework in Frameworks */,
 				06B387C457BE1E7BA1202EC1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +506,7 @@
 		89607571B3A717DCCB03AF23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A0F776B1C462C2B001A4245 /* MessageUI.framework */,
 				1BA1708193465F7593E9096E /* libPods.a */,
 			);
 			name = Frameworks;

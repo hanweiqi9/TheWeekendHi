@@ -29,6 +29,8 @@
 #	define HWQLog(...)
 #endif
 
+#define mainColor  [UIColor colorWithRed:95/255.0 green:185/255.0 blue:191/255.0 alpha:1.0]
+
 
 
 #endif /* Main_pch */

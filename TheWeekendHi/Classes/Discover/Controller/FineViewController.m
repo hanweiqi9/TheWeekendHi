@@ -27,6 +27,11 @@
 
 @implementation FineViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -37,7 +42,7 @@
     self.allLikeArray = [NSMutableArray new];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"DiscoverTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    
+    self.navigationController.navigationBar.barTintColor = mainColor;
     [self loadDate];
     [self.tableView launchRefreshing];
     
@@ -100,6 +105,8 @@
     [self.navigationController pushViewController:activityVC animated:YES];
     
     
+    
+    
 }
 
 #pragma mark---------------PullingRefreshTableViewDelegate
@@ -130,7 +137,7 @@
 
 - (PullingRefreshTableView *)tableView{
         if (_tableView == nil) {
-            self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 64) pullingDelegate:self];
+            self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) pullingDelegate:self];
             self.tableView.delegate = self;
             self.tableView.dataSource = self;
             self.tableView.rowHeight = 90;

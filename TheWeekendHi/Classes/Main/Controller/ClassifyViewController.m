@@ -168,10 +168,6 @@
                 [self.showArray addObject:model];
 //                NSLog(@"show = %@",self.showArray);
             }
-            [self.tableView reloadData];
-            //完成加载
-            [self.tableView tableViewDidFinishedLoading];
-            self.tableView.reachedTheEnd = NO;
             
         }
 
@@ -208,11 +204,7 @@
                 GoodModel *model = [[GoodModel alloc]initWithDictionary:acDic];
                 [self.touristArray addObject:model];
             }
-            [self.tableView reloadData];
-            //完成加载
-            [self.tableView tableViewDidFinishedLoading];
-            self.tableView.reachedTheEnd = NO;
-          
+
         }
         [self showPreviousSelectBtn];
 
@@ -250,10 +242,6 @@
                 [self.studyArray addObject:model];
                 
             }
-            [self.tableView reloadData];
-            //完成加载
-            [self.tableView tableViewDidFinishedLoading];
-            self.tableView.reachedTheEnd = NO;
         }
         [self showPreviousSelectBtn];
 
@@ -291,10 +279,6 @@
                 GoodModel *model = [[GoodModel alloc]initWithDictionary:acDic];
                 [self.familyArray addObject:model];
             }
-            [self.tableView reloadData];
-            //完成加载
-            [self.tableView tableViewDidFinishedLoading];
-            self.tableView.reachedTheEnd = NO;
 
         }
         [self showPreviousSelectBtn];
@@ -310,12 +294,12 @@
 #pragma mark--------------CustomMethod
 
 - (void)showPreviousSelectBtn{
-    if (self.refreshing) {//下拉显示原来数据
-        if (self.showDataArray.count > 0) {
-            [self.showDataArray removeAllObjects];
-        }
-
-    }
+//    if (self.refreshing) {//下拉显示原来数据
+//        if (self.showDataArray.count > 0) {
+//            [self.showDataArray removeAllObjects];
+//        }
+//
+//    }
         switch (self.classifyListType) {
         case ClassifyListTypeShowRepertoire:
         {
@@ -340,6 +324,10 @@
         default:
             break;
     }
+    //完成加载
+    [self.tableView tableViewDidFinishedLoading];
+    self.tableView.reachedTheEnd = NO;
+
     [self.tableView reloadData];
 }
 
