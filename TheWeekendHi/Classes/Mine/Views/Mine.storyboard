@@ -23,7 +23,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLV-o6-cpl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672.5" y="383.5"/>
+            <point key="canvasLocation" x="78.5" y="377.5"/>
+        </scene>
+        <!--Share View Controller-->
+        <scene sceneID="yRp-Tn-hcu">
+            <objects>
+                <viewController id="j7I-GX-Ah2" customClass="ShareViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nxH-z8-1ih"/>
+                        <viewControllerLayoutGuide type="bottom" id="yK8-jh-AU7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R62-tu-gT2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KZ7-ac-Qt3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="208"/>
+                                <color key="backgroundColor" red="1" green="0.47952576320000001" blue="0.40316226440000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2n-kT-rSX">
+                                <rect key="frame" x="45" y="290" width="284" height="30"/>
+                                <color key="backgroundColor" red="0.98804530201342278" green="0.5750846977637567" blue="0.012694563057718142" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="发送"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yfe-W7-HLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="474.5" y="377.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1CN-eM-g30">
@@ -46,7 +80,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8e-OY-dXr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="220" y="384"/>
+            <point key="canvasLocation" x="-302.5" y="372.5"/>
         </scene>
     </scenes>
 </document>

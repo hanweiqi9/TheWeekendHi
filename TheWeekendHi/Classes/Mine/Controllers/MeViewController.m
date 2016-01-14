@@ -12,6 +12,8 @@
 #import "ProgressHUD.h"
 #import "WeiboSDK.h"
 #import "AppDelegate.h"
+#import "LandViewController.h"
+
 
 
 
@@ -23,12 +25,7 @@
 @property(nonatomic,strong) NSMutableArray *titleArray;
 @property(nonatomic,strong) UILabel *label;
 @property(nonatomic,strong) UIView *shareView;
-@property (nonatomic, strong) UISwitch *imageSwitch;
-@property (nonatomic, strong) UISwitch *textSwitch;
-@property (nonatomic, strong) UISwitch *mediaSwitch;
-
-
-
+@property(nonatomic,strong) UIView *grayView;
 
 @end
 
@@ -39,9 +36,7 @@
     // Do any additional setup after loading the view.
     [self.view addSubview:self.tableView];
     self.navigationController.navigationBar.barTintColor = mainColor;
-    
-    
-   
+
     self.titleArray = [NSMutableArray arrayWithObjects:@"清除图片缓存",@"用户反馈",@"分享给好友",@" 给我评分",@" 当前版本",nil];
     self.imageArray = @[@"icon_shop",@"icon_user-1",@"icon_ac",@"pc_menu_collect_pressed_ic",@"umeng_example_socialize_action_icon"];
     [self setUpTableViewHeaderView];
@@ -108,94 +103,12 @@
 }
 
 -(void)share{
-    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    self.shareView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-200, kScreenWidth, 350)];
-    self.shareView.backgroundColor = [UIColor whiteColor];
-    [window addSubview:self.shareView];
     
-   
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        
-        //微博
-        UIButton *weiboBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        weiboBtn.frame = CGRectMake(30, 40, 70, 70);
-        [weiboBtn setImage:[UIImage imageNamed:@"sina_normal"] forState:UIControlStateNormal];
-        [weiboBtn addTarget:self action:@selector(weiboActivity:) forControlEvents:UIControlEventTouchUpInside];
-        [self.shareView addSubview:weiboBtn];
-        //朋友圈
-        UIButton *CircleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        CircleBtn.frame = CGRectMake(155, 40, 70, 70);
-        [CircleBtn setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
-        [CircleBtn addTarget:self action:@selector(circleActivity) forControlEvents:UIControlEventTouchUpInside];
-        [self.shareView addSubview:CircleBtn];
-        
-        //微信朋友
-        UIButton *friendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        friendBtn.frame = CGRectMake(270, 40, 70, 70);
-        [friendBtn setImage:[UIImage imageNamed:@"wx_normal"] forState:UIControlStateNormal];
-        [friendBtn addTarget:self action:@selector(friendActivity)  forControlEvents:UIControlEventTouchUpInside];
-        [self.shareView addSubview:friendBtn];
-        
-        //取消
-        UIButton *removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        removeBtn.frame = CGRectMake(20, 150, kScreenWidth-40, 44);
-        [removeBtn setTitle:@"取消" forState:UIControlStateNormal];
-        [removeBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [removeBtn addTarget:self action:@selector(last ) forControlEvents:UIControlEventTouchUpInside];
-        [self.shareView addSubview:removeBtn];
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(150, 10, 75 , 44)];
-        label.text = @"分享到";
-        label.textAlignment = NSTextAlignmentCenter;
-        [self.shareView addSubview:label];
-    }];
-}
-
--(void)last{
-    [self.shareView removeFromSuperview];
-}
-
-//分享到微博
--(void)weiboActivity:(UIButton *)btn{
-    
-    AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
-    WBAuthorizeRequest *authRequest = [WBAuthorizeRequest request];
-    authRequest.redirectURI = kRedirectURL;
-    authRequest.scope = @"all";
-    WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:[self messageToShare] authInfo:authRequest access_token:myDelegate.wbtoken];
-    request.userInfo = @{@"ShareMessageFrom": @"MeViewController",
-                         @"Other_Info_1": [NSNumber numberWithInt:123],
-                         @"Other_Info_2": @[@"obj1", @"obj2"],
-                         @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
-    [WeiboSDK sendRequest:request];
-    [self.shareView removeFromSuperview];
-
-}
-
-- (WBMessageObject *)messageToShare{
-    WBMessageObject *message = [WBMessageObject message];
-    
-    message.text = NSLocalizedString(@"测试通过WeiboSDK发送文字到微博!", nil);
-    
-
-    
-    return message;
-
-}
-//分享微信好友
--(void)friendActivity{
-    SendMessageToWXReq *req = [[SendMessageToWXReq alloc]init];
-    req.text = @"这是测试发送内容";
-    req.bText = YES;
-    req.scene = WXSceneSession;
-    [WXApi sendReq:req];
-}
-//分享到朋友圈
-- (void)circleActivity{
-    
+    self.shareView = [[shareView alloc] init];
+    [self.view addSubview:self.shareView];
     
 }
+
 
 #pragma mark--------------WeiboSDKDelegate
 
@@ -315,6 +228,12 @@
 }
 
 - (void)headImageBtnActivity{
+    
+    LandViewController *landVC = [[LandViewController alloc] init];
+    self.tabBarController.tabBar.hidden = NO;
+    [self.navigationController pushViewController:landVC animated:YES];
+    
+    
     
 }
 

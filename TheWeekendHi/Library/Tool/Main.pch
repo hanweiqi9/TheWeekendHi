@@ -17,6 +17,7 @@
 #import "UIViewController+Common.h"
 #import "HWTools.h"
 #import "UIView+Extension.h"
+#import "shareView.h"
 
 
 //屏幕宽高
