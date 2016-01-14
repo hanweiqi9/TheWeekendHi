@@ -43,4 +43,11 @@ typedef NS_ENUM(NSInteger,ClassifyListType) {
 
 #define kDiscover @"http://e.kumi.cn/app/found.php?_s_=a82c7d49216aedb18c04a20fd9b0d5b2&_t_=1451310230&channelid=appstore&cityid=1&lat=34.62172291944134&lng=112.4149512442411"
 
+
+#define kAppKey @"832612899"
+#define kAppSecret @"5742df251739f9100b0dd609fe92f847"
+#define kRedirectURL @"https://api.weibo.com/oauth2/default.html"
+
+
+
 #endif /* Header_h */

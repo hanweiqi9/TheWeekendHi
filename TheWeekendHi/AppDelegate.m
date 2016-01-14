@@ -8,19 +8,33 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "WeiboSDK.h"
+#import "MeViewController.h"
+#import "WXApi.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WeiboSDKDelegate,WXApiDelegate>
+
+
 
 @property (nonatomic, strong) UITabBarController *tabBarVC;
 
 @end
 
 @implementation AppDelegate
-
+@synthesize wbtoken;
+@synthesize wbCurrentUserID;
+@synthesize wbRefreshToken;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    
+    [WeiboSDK enableDebugMode:YES];
+    [WeiboSDK registerApp:kAppKey];
+    [WXApi registerApp:@"wx836e0e1186869c42"];
+   
+
     
     //UITabBarController
     self.tabBarVC = [[UITabBarController alloc] init];
@@ -45,16 +59,7 @@
     disNav.tabBarItem.selectedImage = [disSelectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     disNav.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     
-    
-//    UIStoryboard *discoverStoryBoard = [UIStoryboard storyboardWithName:@"discover" bundle:nil];
-//    UINavigationController *discoverNav = discoverStoryBoard.instantiateInitialViewController;
-//    discoverNav.tabBarItem.image = [UIImage imageNamed:@"ft_found_normal_ic"];
-//    //设置图片，选中的时候的图片按照原始状态显示
-//    UIImage *disselectImage = [UIImage imageNamed:@"ft_found_selected_ic"];
-//    discoverNav.tabBarItem.selectedImage = [disselectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    
-//    discoverNav.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
-    
+        
     //我的
     UIStoryboard *mineStoryBoard = [UIStoryboard storyboardWithName:@"Mine" bundle:nil];
     UINavigationController *mineNav = mineStoryBoard.instantiateInitialViewController;
@@ -76,6 +81,37 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+
+#pragma mark-----------------微博微信
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    if ([WeiboSDK isCanSSOInWeiboApp]) {
+        return [WeiboSDK handleOpenURL:url delegate:self];
+    }
+    
+    return [WXApi handleOpenURL:url delegate:self];
+
+}
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    if ([WeiboSDK isCanSSOInWeiboApp]) {
+        return [WeiboSDK handleOpenURL:url delegate:self];
+    }
+    return [WXApi handleOpenURL:url delegate:self];
+
+}
+-(void)didReceiveWeiboRequest:(WBBaseRequest *)request{
+
+
+}
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+       
+}
+
+
+#pragma mark----------------微信代理方法
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
