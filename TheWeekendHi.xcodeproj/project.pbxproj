@@ -21,6 +21,17 @@
 		7A0F778B1C465110001A4245 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F778A1C465110001A4245 /* libsqlite3.tbd */; };
 		7A0F77921C468C3F001A4245 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F778D1C468C3F001A4245 /* libWeChatSDK.a */; };
 		7A0F77931C468C3F001A4245 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7A0F778E1C468C3F001A4245 /* read_me.txt */; };
+		7A12DC9B1C48E9AF0004B717 /* Bmob_iOS_SDK更新历史.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7A12DC991C48E9AF0004B717 /* Bmob_iOS_SDK更新历史.txt */; };
+		7A12DC9C1C48E9AF0004B717 /* BmobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A12DC9A1C48E9AF0004B717 /* BmobSDK.framework */; };
+		7A12DC9E1C48EA460004B717 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A12DC9D1C48EA460004B717 /* CoreGraphics.framework */; };
+		7A12DCA01C48EA520004B717 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A12DC9F1C48EA520004B717 /* MobileCoreServices.framework */; };
+		7A12DCA21C48EA590004B717 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A12DCA11C48EA590004B717 /* CFNetwork.framework */; };
+		7A12DCA41C48EA820004B717 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A12DCA31C48EA820004B717 /* libz.1.2.5.tbd */; };
+		7A12DCA61C48EA8F0004B717 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A12DCA51C48EA8F0004B717 /* libicucore.tbd */; };
+		7A12DCA81C48EAB30004B717 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A12DCA71C48EAB30004B717 /* AVFoundation.framework */; };
+		7A12DCAA1C48EABE0004B717 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A12DCA91C48EABE0004B717 /* MediaPlayer.framework */; };
+		7A12DCB01C48ED610004B717 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12DCAF1C48ED610004B717 /* LoginViewController.m */; };
+		7A12DCB31C48EDB70004B717 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A12DCB21C48EDB70004B717 /* Login.storyboard */; };
 		7A12FAF21C3FA1BE00E47072 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAEE1C3FA1BE00E47072 /* blueArrow.png */; };
 		7A12FAF31C3FA1BE00E47072 /* blueArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A12FAEF1C3FA1BE00E47072 /* blueArrowDown.png */; };
 		7A12FAF41C3FA1BE00E47072 /* PullingRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A12FAF11C3FA1BE00E47072 /* PullingRefreshTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -33,8 +44,6 @@
 		7A14139A1C47389700C71719 /* shareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1413991C47389700C71719 /* shareView.m */; };
 		7A14139D1C474DED00C71719 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A14139C1C474DED00C71719 /* ShareViewController.m */; };
 		7A14139F1C4779A600C71719 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A14139E1C4779A500C71719 /* 1.jpg */; };
-		7A1413A31C47921C00C71719 /* LandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1413A11C47921C00C71719 /* LandViewController.m */; };
-		7A1413A41C47921C00C71719 /* LandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1413A21C47921C00C71719 /* LandViewController.xib */; };
 		7A1413A61C47C07200C71719 /* tupian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1413A51C47C07200C71719 /* tupian@2x.png */; };
 		7A18BF2D1C449F6A001DAEF9 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A18BF2A1C449F6A001DAEF9 /* ProgressHUD.bundle */; };
 		7A18BF2E1C449F6A001DAEF9 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A18BF2C1C449F6A001DAEF9 /* ProgressHUD.m */; };
@@ -131,6 +140,18 @@
 		7A0F778F1C468C3F001A4245 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		7A0F77901C468C3F001A4245 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		7A0F77911C468C3F001A4245 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		7A12DC991C48E9AF0004B717 /* Bmob_iOS_SDK更新历史.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Bmob_iOS_SDK更新历史.txt"; sourceTree = "<group>"; };
+		7A12DC9A1C48E9AF0004B717 /* BmobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobSDK.framework; sourceTree = "<group>"; };
+		7A12DC9D1C48EA460004B717 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7A12DC9F1C48EA520004B717 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		7A12DCA11C48EA590004B717 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7A12DCA31C48EA820004B717 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		7A12DCA51C48EA8F0004B717 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		7A12DCA71C48EAB30004B717 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7A12DCA91C48EABE0004B717 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		7A12DCAE1C48ED610004B717 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7A12DCAF1C48ED610004B717 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7A12DCB21C48EDB70004B717 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		7A12FAEE1C3FA1BE00E47072 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
 		7A12FAEF1C3FA1BE00E47072 /* blueArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrowDown.png; sourceTree = "<group>"; };
 		7A12FAF01C3FA1BE00E47072 /* PullingRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullingRefreshTableView.h; sourceTree = "<group>"; };
@@ -148,9 +169,6 @@
 		7A14139B1C474DED00C71719 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		7A14139C1C474DED00C71719 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		7A14139E1C4779A500C71719 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		7A1413A01C47921C00C71719 /* LandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandViewController.h; sourceTree = "<group>"; };
-		7A1413A11C47921C00C71719 /* LandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandViewController.m; sourceTree = "<group>"; };
-		7A1413A21C47921C00C71719 /* LandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandViewController.xib; sourceTree = "<group>"; };
 		7A1413A51C47C07200C71719 /* tupian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tupian@2x.png"; sourceTree = "<group>"; };
 		7A18BF2A1C449F6A001DAEF9 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		7A18BF2B1C449F6A001DAEF9 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
@@ -244,15 +262,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A12DCAA1C48EABE0004B717 /* MediaPlayer.framework in Frameworks */,
+				7A12DCA81C48EAB30004B717 /* AVFoundation.framework in Frameworks */,
+				7A12DCA61C48EA8F0004B717 /* libicucore.tbd in Frameworks */,
+				7A12DCA41C48EA820004B717 /* libz.1.2.5.tbd in Frameworks */,
+				7A0F77811C465098001A4245 /* SystemConfiguration.framework in Frameworks */,
+				7A0F77851C4650B9001A4245 /* CoreTelephony.framework in Frameworks */,
+				7A12DCA21C48EA590004B717 /* CFNetwork.framework in Frameworks */,
+				7A12DCA01C48EA520004B717 /* MobileCoreServices.framework in Frameworks */,
+				7A12DC9E1C48EA460004B717 /* CoreGraphics.framework in Frameworks */,
 				7A1413971C472D8E00C71719 /* libsqlite3.0.tbd in Frameworks */,
 				7A1413951C472D7000C71719 /* libc++.tbd in Frameworks */,
 				7A0F778B1C465110001A4245 /* libsqlite3.tbd in Frameworks */,
 				7A0F77891C4650FA001A4245 /* libz.tbd in Frameworks */,
+				7A12DC9C1C48E9AF0004B717 /* BmobSDK.framework in Frameworks */,
 				7A0F77921C468C3F001A4245 /* libWeChatSDK.a in Frameworks */,
 				7A0F77871C4650C2001A4245 /* CoreText.framework in Frameworks */,
-				7A0F77851C4650B9001A4245 /* CoreTelephony.framework in Frameworks */,
 				7A0F77831C4650A9001A4245 /* Security.framework in Frameworks */,
-				7A0F77811C465098001A4245 /* SystemConfiguration.framework in Frameworks */,
 				7A0F777F1C46507A001A4245 /* ImageIO.framework in Frameworks */,
 				7A0F777D1C465070001A4245 /* QuartzCore.framework in Frameworks */,
 				7A0F776C1C462C2B001A4245 /* MessageUI.framework in Frameworks */,
@@ -307,6 +333,49 @@
 				7A0F77911C468C3F001A4245 /* WXApiObject.h */,
 			);
 			path = "SDK1.6-2.2";
+			sourceTree = "<group>";
+		};
+		7A12DC981C48E9AF0004B717 /* Bmob_SDK_iOS_v1.6.6 */ = {
+			isa = PBXGroup;
+			children = (
+				7A12DC991C48E9AF0004B717 /* Bmob_iOS_SDK更新历史.txt */,
+				7A12DC9A1C48E9AF0004B717 /* BmobSDK.framework */,
+			);
+			path = Bmob_SDK_iOS_v1.6.6;
+			sourceTree = "<group>";
+		};
+		7A12DCAB1C48ED2D0004B717 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				7A12DCB11C48ED8D0004B717 /* Views */,
+				7A12DCAC1C48ED2D0004B717 /* Controlls */,
+				7A12DCAD1C48ED2D0004B717 /* Model */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		7A12DCAC1C48ED2D0004B717 /* Controlls */ = {
+			isa = PBXGroup;
+			children = (
+				7A12DCAE1C48ED610004B717 /* LoginViewController.h */,
+				7A12DCAF1C48ED610004B717 /* LoginViewController.m */,
+			);
+			path = Controlls;
+			sourceTree = "<group>";
+		};
+		7A12DCAD1C48ED2D0004B717 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A12DCB11C48ED8D0004B717 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A12DCB21C48EDB70004B717 /* Login.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7A12FAED1C3FA1BE00E47072 /* PullingRefreshTableView */ = {
@@ -431,6 +500,7 @@
 		7A9D91A61C3A4F4100B72CF9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7A12DCAB1C48ED2D0004B717 /* login */,
 				7A9D91A71C3A4F4100B72CF9 /* Discover */,
 				7A9D91AD1C3A4F4100B72CF9 /* Main */,
 				7A9D91B31C3A4F4100B72CF9 /* Mine */,
@@ -569,9 +639,6 @@
 			children = (
 				7A9D91B51C3A4F4100B72CF9 /* MeViewController.h */,
 				7A9D91B61C3A4F4100B72CF9 /* MeViewController.m */,
-				7A1413A01C47921C00C71719 /* LandViewController.h */,
-				7A1413A11C47921C00C71719 /* LandViewController.m */,
-				7A1413A21C47921C00C71719 /* LandViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -594,6 +661,7 @@
 		7A9D91BC1C3A4FC100B72CF9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7A12DC981C48E9AF0004B717 /* Bmob_SDK_iOS_v1.6.6 */,
 				7A0F778C1C468C3F001A4245 /* SDK1.6-2.2 */,
 				7A0F776D1C464F75001A4245 /* libWeiboSDK */,
 				7A18BF291C449F6A001DAEF9 /* ProgressHUD */,
@@ -616,6 +684,13 @@
 		89607571B3A717DCCB03AF23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A12DCA91C48EABE0004B717 /* MediaPlayer.framework */,
+				7A12DCA71C48EAB30004B717 /* AVFoundation.framework */,
+				7A12DCA51C48EA8F0004B717 /* libicucore.tbd */,
+				7A12DCA31C48EA820004B717 /* libz.1.2.5.tbd */,
+				7A12DCA11C48EA590004B717 /* CFNetwork.framework */,
+				7A12DC9F1C48EA520004B717 /* MobileCoreServices.framework */,
+				7A12DC9D1C48EA460004B717 /* CoreGraphics.framework */,
 				7A1413961C472D8E00C71719 /* libsqlite3.0.tbd */,
 				7A1413941C472D7000C71719 /* libc++.tbd */,
 				7A0F778A1C465110001A4245 /* libsqlite3.tbd */,
@@ -749,6 +824,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9D91C81C3A766D00B72CF9 /* MainTableViewCell.xib in Resources */,
+				7A12DC9B1C48E9AF0004B717 /* Bmob_iOS_SDK更新历史.txt in Resources */,
 				7A372F6B1C3B7FA000892207 /* main.plist in Resources */,
 				7A18BF7D1C44FA6B001DAEF9 /* DiscoverTableViewCell.xib in Resources */,
 				7A12FAFC1C3FA3C200E47072 /* GoodTableViewCell.xib in Resources */,
@@ -770,7 +846,7 @@
 				7A6DDAE21C43A7DF00C9B5C4 /* typeid6.plist in Resources */,
 				7A9D91C11C3A508E00B72CF9 /* Mine.storyboard in Resources */,
 				7A6DDAE81C43A7F400C9B5C4 /* typeud21.plist in Resources */,
-				7A1413A41C47921C00C71719 /* LandViewController.xib in Resources */,
+				7A12DCB31C48EDB70004B717 /* Login.storyboard in Resources */,
 				7A6DDAE61C43A7ED00C9B5C4 /* typeid22.plist in Resources */,
 				7A9D91521C3A1C3900B72CF9 /* LaunchScreen.storyboard in Resources */,
 				7A0F77931C468C3F001A4245 /* read_me.txt in Resources */,
@@ -851,6 +927,7 @@
 				7A6DDADE1C4392B100C9B5C4 /* VOIndicatorAnimation.m in Sources */,
 				7A623EFB1C40F3DE003B4FCE /* HotModel.m in Sources */,
 				7A6DDADD1C4392B100C9B5C4 /* VOContentLayer.m in Sources */,
+				7A12DCB01C48ED610004B717 /* LoginViewController.m in Sources */,
 				7A3883AC1C3E4C34006584F9 /* HWTools.m in Sources */,
 				7A6DDADF1C4392B100C9B5C4 /* VOSegment.m in Sources */,
 				7A18BF7C1C44FA6B001DAEF9 /* DiscoverTableViewCell.m in Sources */,
@@ -864,7 +941,6 @@
 				7A12FB011C3FBE4600E47072 /* GoodModel.m in Sources */,
 				7A18BFB61C451292001DAEF9 /* DiscoverModel.m in Sources */,
 				7A6DDAE01C4392B100C9B5C4 /* VOSegmentedControl.m in Sources */,
-				7A1413A31C47921C00C71719 /* LandViewController.m in Sources */,
 				7A9D91B91C3A4F4100B72CF9 /* FineViewController.m in Sources */,
 				7A5867221C3CBD9300090519 /* SearchViewController.m in Sources */,
 				7A9D91BA1C3A4F4100B72CF9 /* MainViewController.m in Sources */,
@@ -1012,8 +1088,13 @@
 			baseConfigurationReference = B976EDFD6039424409ACB3FD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TheWeekendHi/Library/Bmob_SDK_iOS_v1.6.6",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/UI学习/第一个项目/TheWeekendHi/TheWeekendHi/Library/Tool/Main.pch";
 				INFOPLIST_FILE = TheWeekendHi/Info.plist;
@@ -1035,8 +1116,13 @@
 			baseConfigurationReference = A639E8B9EF2EA8DE650CE5EA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TheWeekendHi/Library/Bmob_SDK_iOS_v1.6.6",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/scjy/Desktop/UI学习/第一个项目/TheWeekendHi/TheWeekendHi/Library/Tool/Main.pch";
 				INFOPLIST_FILE = TheWeekendHi/Info.plist;

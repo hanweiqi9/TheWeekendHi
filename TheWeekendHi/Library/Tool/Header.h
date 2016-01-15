@@ -48,6 +48,6 @@ typedef NS_ENUM(NSInteger,ClassifyListType) {
 #define kAppSecret @"5742df251739f9100b0dd609fe92f847"
 #define kRedirectURL @"https://api.weibo.com/oauth2/default.html"
 
-
+#define kBmobKey @"104c9cad792305253fbeb11c10315d76"
 
 #endif /* Header_h */

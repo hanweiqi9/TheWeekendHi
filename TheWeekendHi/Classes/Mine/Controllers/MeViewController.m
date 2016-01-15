@@ -12,7 +12,7 @@
 #import "ProgressHUD.h"
 #import "WeiboSDK.h"
 #import "AppDelegate.h"
-#import "LandViewController.h"
+#import "LoginViewController.h"
 
 
 
@@ -229,10 +229,9 @@
 
 - (void)headImageBtnActivity{
     
-    LandViewController *landVC = [[LandViewController alloc] init];
-    self.tabBarController.tabBar.hidden = NO;
-    [self.navigationController pushViewController:landVC animated:YES];
-    
+    UIStoryboard *loginStoryBoard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UINavigationController *loginVC = [loginStoryBoard instantiateViewControllerWithIdentifier:@"Login"];
+    [self.navigationController presentViewController:loginVC animated:YES completion:nil];
     
     
 }

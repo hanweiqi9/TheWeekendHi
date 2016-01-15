@@ -11,6 +11,7 @@
 #import "WeiboSDK.h"
 #import "MeViewController.h"
 #import "WXApi.h"
+#import <BmobSDK/Bmob.h>
 
 @interface AppDelegate ()<WeiboSDKDelegate,WXApiDelegate>
 
@@ -29,11 +30,14 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    
+    //微博注册
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
+    //注册微信
     [WXApi registerApp:@"wx836e0e1186869c42"];
-   
+    //注册bmobkey
+    [Bmob registerWithAppKey:kBmobKey];
+    
 
     
     //UITabBarController
